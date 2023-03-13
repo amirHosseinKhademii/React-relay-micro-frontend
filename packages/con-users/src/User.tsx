@@ -1,5 +1,6 @@
 import { ICPersonPlus, ICPersonMinus, ICComments } from "pcg-commons";
 import { TUser, useUser } from "./hooks/use-user";
+import { Messages } from "con-messages";
 
 export const User = ({ user }: { user: TUser }) => {
   const { onFollow, userId, onMessagesToggle, isMessagesOpen } = useUser();
@@ -27,8 +28,7 @@ export const User = ({ user }: { user: TUser }) => {
           )}
         </div>
       </div>
-
-      {/* {isMessagesOpen && <Messages />} */}
+      {isMessagesOpen && <Messages />}
     </div>
   );
 };

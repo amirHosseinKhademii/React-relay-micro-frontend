@@ -2,7 +2,6 @@ import { useMessages } from "./hooks";
 
 export const Messages = () => {
   const { data } = useMessages("12345");
-  console.log({ data });
 
   return (
     <div className="w-full flex flex-col space-y-2">
