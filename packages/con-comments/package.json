@@ -10,15 +10,16 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.22",
+    "con-users": "*",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
-    "react": "^18.2.0",
-    "tsconfig": "*",
-    "typescript": "^4.5.2",
     "pcg-commons": "*",
-    "con-users": "*",
+    "react": "^18.2.0",
+    "react-relay": "14.0.0",
+    "recoil": "^0.7.7",
     "relay-runtime": "14.0.0",
-    "react-relay": "14.0.0"
+    "tsconfig": "*",
+    "typescript": "^4.5.2"
   },
   "relay": {
     "src": "./src/",

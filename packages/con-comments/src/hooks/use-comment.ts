@@ -6,6 +6,8 @@ import {
   CommentLikeMutation,
 } from "../graphql/Comment.mutation";
 import { CommentLikeMutation as TCommentLikeMutation } from "../graphql/__generated__/CommentLikeMutation.graphql";
+import { useRecoilValue } from "recoil";
+import { authAtom } from "pcg-commons";
 
 export type TComment = {
   __id?: string;
@@ -21,7 +23,9 @@ export type TComment = {
   };
 };
 
-export const useComment = ({ __id }: TComment) => {
+export const useComment = ({ __id, comment }: TComment) => {
+  const { user } = useRecoilValue(authAtom);
+
   const [deleteComment] = useMutation<TCommentDeleteMutation>(
     CommentDeleteMutation
   );
@@ -80,5 +84,6 @@ export const useComment = ({ __id }: TComment) => {
         },
       });
     },
+    isLiked: comment.node?.likes?.includes(user!),
   };
 };

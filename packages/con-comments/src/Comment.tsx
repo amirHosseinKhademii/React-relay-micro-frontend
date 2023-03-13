@@ -1,10 +1,10 @@
-import { ICHeartOutline, ICTrash } from "pcg-commons";
+import { ICHeartFill, ICHeartOutline, ICTrash } from "pcg-commons";
 import { Suspense } from "react";
 import { TComment, useComment } from "./hooks/use-comment";
 import { UsersByIds } from "con-users";
 
 export const Comment = ({ comment, __id }: TComment) => {
-  const { onDelete, onLike, isUsers, onUsersToggle } = useComment({
+  const { onDelete, onLike, isUsers, onUsersToggle, isLiked } = useComment({
     comment,
     __id,
   });
@@ -22,10 +22,17 @@ export const Comment = ({ comment, __id }: TComment) => {
             >
               {comment?.node?.likes?.length}
             </button>
-            <ICHeartOutline
-              className="text-red-500 w-5"
-              onClick={() => onLike(comment)}
-            />
+            {isLiked ? (
+              <ICHeartFill
+                className="text-red-500 w-5"
+                onClick={() => onLike(comment)}
+              />
+            ) : (
+              <ICHeartOutline
+                className="text-red-500 w-5"
+                onClick={() => onLike(comment)}
+              />
+            )}
           </div>
           <ICTrash
             className="text-red-600 w-5"
