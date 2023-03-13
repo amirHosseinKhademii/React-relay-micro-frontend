@@ -1,5 +1,3 @@
-import { ICPersonMinus } from "icons/ICPersonMinus";
-import { ICPersonPlus } from "icons/ICPersonPlus";
 import { useUsers } from "./hooks";
 import { User } from "./User";
 

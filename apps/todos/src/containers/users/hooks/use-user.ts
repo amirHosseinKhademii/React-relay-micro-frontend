@@ -3,7 +3,7 @@ import { useMutation } from "react-relay";
 import { UserFollowMutation } from "containers/users/graphql/User.mutations";
 import { UserFollowMutation as TUserFollowMutation } from "containers/users/graphql/__generated__/UserFollowMutation.graphql";
 import { useRecoilValue } from "recoil";
-import { authAtom } from "providers/atoms/auth-atoms";
+import { authAtom } from "pcg-commons";
 
 export type TUser = {
   readonly followers: readonly string[];

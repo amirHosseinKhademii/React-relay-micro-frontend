@@ -1,7 +1,5 @@
 import { Messages } from "containers/messages/Messages";
-import { ICComments } from "icons/ICComments";
-import { ICPersonMinus } from "icons/ICPersonMinus";
-import { ICPersonPlus } from "icons/ICPersonPlus";
+import { ICComments, ICPersonMinus, ICPersonPlus } from "pcg-commons";
 import { TUser, useUser } from "./hooks/use-user";
 
 export const User = ({ user }: { user: TUser }) => {
