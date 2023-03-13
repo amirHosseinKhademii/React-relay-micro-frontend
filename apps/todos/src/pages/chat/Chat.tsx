@@ -1,4 +1,4 @@
-import { Users } from "containers/users/Users";
+import { Users } from "con-users";
 import { Suspense } from "react";
 
 const Home = () => {

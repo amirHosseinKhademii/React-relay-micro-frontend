@@ -23,6 +23,7 @@ export const useSignIn = () => {
         onCompleted: (data) => {
           const user = { user: data.signIn.user.id, token: data.signIn.token };
           setAuth(user);
+          //@ts-ignore
           localStorage.setItem("user", JSON.stringify(user));
           navigate("/");
         },

@@ -36,7 +36,8 @@
     "subscriptions-transport-ws": "^0.11.0",
     "con-todos": "*",
     "pcg-commons": "*",
-    "con-auth": "*"
+    "con-auth": "*",
+    "con-users": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
