@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 const Todo = () => {
   return (
-    <div className="bg-slate-900 antialiased h-screen p-8">
+    <div className="bg-slate-900 antialiased h-screen p-8 px-[500px]">
       <Suspense fallback="Loading Todos ...">
         <Todos />
       </Suspense>
