@@ -1,4 +1,4 @@
-//import { Cards } from "containers/cards/Cards";
+import { Cards } from "con-cards";
 import { ICDone, ICTrash, ICUnDone } from "pcg-commons";
 import { useTodo } from "./hooks";
 
@@ -30,8 +30,7 @@ export const Todo = ({ id, __id }: { id: string; __id: string }) => {
           />
         </div>
       </div>
-      {/* 
-      {todo && <Cards {...{ todo }} todoId={todo.id!} />} */}
+      {todo && <Cards {...{ todo }} todoId={todo.id!} />}
     </div>
   );
 };
