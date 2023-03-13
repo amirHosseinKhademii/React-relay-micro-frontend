@@ -1,6 +1,6 @@
 import Authentication from "pages/authentication/Authentication";
 import Todo from "pages/todo/Todo";
-import { authAtom } from "providers/atoms/auth-atoms";
+import { authAtom } from "pcg-commons";
 import { ReactNode } from "react";
 import {
   BrowserRouter,

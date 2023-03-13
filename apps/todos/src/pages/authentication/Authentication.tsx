@@ -1,4 +1,4 @@
-import { SignIn } from "containers/auth/SignIn";
+import { SignIn } from "con-auth";
 
 const Authentication = () => {
   return (

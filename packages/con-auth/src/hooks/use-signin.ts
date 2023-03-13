@@ -1,8 +1,8 @@
 import { useMutation } from "react-relay";
-import { AuthSignInMutation } from "containers/auth/graphql/Auth.mutations";
-import { AuthSignInMutation as TAuthSignInMutation } from "containers/auth/graphql/__generated__/AuthSignInMutation.graphql";
+import { AuthSignInMutation } from "../graphql/Auth.mutations";
+import { AuthSignInMutation as TAuthSignInMutation } from "../graphql/__generated__/AuthSignInMutation.graphql";
 import { useSetRecoilState } from "recoil";
-import { authAtom } from "providers/atoms/auth-atoms";
+import { authAtom } from "pcg-commons";
 import { useNavigate } from "react-router-dom";
 
 export const useSignIn = () => {

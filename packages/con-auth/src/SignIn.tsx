@@ -1,4 +1,4 @@
-import { Modal } from "components";
+import { Modal } from "pcg-commons";
 import { useSignIn } from "./hooks";
 
 export const SignIn = () => {

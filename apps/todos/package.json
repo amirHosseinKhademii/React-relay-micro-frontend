@@ -34,7 +34,9 @@
     "recoil": "^0.7.6",
     "relay-runtime": "14.0.0",
     "subscriptions-transport-ws": "^0.11.0",
-    "con-todos": "*"
+    "con-todos": "*",
+    "pcg-commons": "*",
+    "con-auth": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
