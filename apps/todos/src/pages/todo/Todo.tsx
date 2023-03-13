@@ -1,4 +1,4 @@
-import { Todos } from "containers/todos/Todos";
+import { Todos } from "con-todos";
 
 import { Suspense } from "react";
 

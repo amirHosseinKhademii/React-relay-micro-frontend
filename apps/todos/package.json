@@ -33,7 +33,8 @@
     "react-router-dom": "^6.8.1",
     "recoil": "^0.7.6",
     "relay-runtime": "14.0.0",
-    "subscriptions-transport-ws": "^0.11.0"
+    "subscriptions-transport-ws": "^0.11.0",
+    "con-todos": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
