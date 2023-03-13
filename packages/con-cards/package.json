@@ -16,7 +16,9 @@
     "tsconfig": "*",
     "typescript": "^4.5.2",
     "pcg-commons": "*",
-    "con-comments": "*"
+    "con-comments": "*",
+    "relay-runtime": "14.0.0",
+    "react-relay": "14.0.0"
   },
   "relay": {
     "src": "./src/",

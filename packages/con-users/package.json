@@ -4,6 +4,9 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "module": "./src/index.ts",
+  "scripts": {
+    "relay": "relay-compiler"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.0.22",
@@ -12,6 +15,24 @@
     "react": "^18.2.0",
     "tsconfig": "*",
     "typescript": "^4.5.2",
-    "pcg-commons": "*"
+    "pcg-commons": "*",
+    "relay-runtime": "14.0.0",
+    "react-relay": "14.0.0"
+  },
+  "relay": {
+    "src": "./src/",
+    "schema": "../../schema.graphql",
+    "language": "typescript",
+    "eagerEsModules": true,
+    "exclude": [
+      "**/node_modules/**",
+      "**/__mocks__/**",
+      "**/__generated__/**"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "relay"
+    ]
   }
 }
