@@ -1,6 +1,5 @@
-import { UsersByIds } from "containers/users/UsersByIds";
-import { ICHeartOutline } from "icons/ICHeartOutline";
-import { ICTrash } from "icons/ICTrash";
+//import { UsersByIds } from "containers/users/UsersByIds";
+import { ICHeartOutline, ICTrash } from "pcg-commons";
 import { Suspense } from "react";
 import { TComment, useComment } from "./hooks/use-comment";
 
@@ -43,7 +42,7 @@ export const Comment = ({ comment, __id }: TComment) => {
 
       {isUsers && comment?.node?.likes.length !== 0 && (
         <Suspense fallback={<div>users Loading...</div>}>
-          <UsersByIds ids={comment.node?.likes!} />
+          {/* <UsersByIds ids={comment.node?.likes!} /> */}
         </Suspense>
       )}
     </div>

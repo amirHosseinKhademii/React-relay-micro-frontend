@@ -1,11 +1,11 @@
 import { useLazyLoadQuery, usePaginationFragment } from "react-relay";
 import { useState, useTransition } from "react";
-import { CommentsQuery } from "containers/comments/graphql/Comments.queries";
-import { CommentsPaginationFrgament } from "containers/comments/graphql/__generated__/CommentsPaginationFrgament.graphql";
-import { CommentsQueryFragment } from "containers/comments/graphql/Comment.fragments";
+import { CommentsQuery } from "../graphql/Comments.queries";
+import { CommentsPaginationFrgament } from "../graphql/__generated__/CommentsPaginationFrgament.graphql";
+import { CommentsQueryFragment } from "../graphql/Comment.fragments";
 
-import type { CommentsQuery as TCommentsQuery } from "containers/comments/graphql/__generated__/CommentsQuery.graphql";
-import type { CommentsQueryFragment$key } from "containers/comments/graphql/__generated__/CommentsQueryFragment.graphql";
+import type { CommentsQuery as TCommentsQuery } from "../graphql/__generated__/CommentsQuery.graphql";
+import type { CommentsQueryFragment$key } from "../graphql/__generated__/CommentsQueryFragment.graphql";
 
 export const useComments = (cardId: string) => {
   const [isPending, startTransition] = useTransition();

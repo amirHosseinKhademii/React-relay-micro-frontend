@@ -1,4 +1,4 @@
-import { Modal } from "components";
+import { Modal } from "pcg-commons";
 import { TUseCommentModal, useCommentsModal } from "./hooks";
 
 export const CommentModal = ({ onClose, __id, cardId }: TUseCommentModal) => {

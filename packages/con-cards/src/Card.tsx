@@ -1,6 +1,7 @@
 import { ICUnDone, ICTrash, ICDone, ICComments } from "pcg-commons";
 import { Suspense } from "react";
 import { TCard, useCard } from "./hooks/use-card";
+import { Comments } from "con-comments";
 
 export const Card = ({ card, __id }: TCard) => {
   const { onDelete, onCompleteToggle, isComments, onCommentsToggle } = useCard({
@@ -41,11 +42,11 @@ export const Card = ({ card, __id }: TCard) => {
           </ICTrash>
         </div>
       </div>
-      {/* {isComments && (
+      {isComments && (
         <Suspense fallback={<div>Loading comments...</div>}>
           <Comments cardId={card.node?.id!} />
         </Suspense>
-      )} */}
+      )}
     </li>
   );
 };

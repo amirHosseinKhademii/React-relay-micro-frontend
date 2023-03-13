@@ -1,5 +1,4 @@
-import { ICLoadMore } from "icons/ICLoadMore";
-import { ICPlus } from "icons/ICPlus";
+import { ICLoadMore, ICPlus } from "pcg-commons";
 import { Comment } from "./Comment";
 import { CommentModal } from "./CommentModal";
 import { useComments } from "./hooks";

@@ -1,11 +1,11 @@
 import { useId, useState } from "react";
 import { useMutation } from "react-relay";
-import { CommentDeleteMutation as TCommentDeleteMutation } from "containers/comments/graphql/__generated__/CommentDeleteMutation.graphql";
+import { CommentDeleteMutation as TCommentDeleteMutation } from "../graphql/__generated__/CommentDeleteMutation.graphql";
 import {
   CommentDeleteMutation,
   CommentLikeMutation,
-} from "containers/comments/graphql/Comment.mutation";
-import { CommentLikeMutation as TCommentLikeMutation } from "containers/comments/graphql/__generated__/CommentLikeMutation.graphql";
+} from "../graphql/Comment.mutation";
+import { CommentLikeMutation as TCommentLikeMutation } from "../graphql/__generated__/CommentLikeMutation.graphql";
 
 export type TComment = {
   __id?: string;

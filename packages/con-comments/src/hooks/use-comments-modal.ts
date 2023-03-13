@@ -1,8 +1,8 @@
 import { useId } from "react";
 import { useMutation } from "react-relay";
 
-import { CommentAddMutation } from "containers/comments/graphql/Comment.mutation";
-import { CommentAddMutation as TCommentAddMutation } from "containers/comments/graphql/__generated__/CommentAddMutation.graphql";
+import { CommentAddMutation } from "../graphql/Comment.mutation";
+import { CommentAddMutation as TCommentAddMutation } from "../graphql/__generated__/CommentAddMutation.graphql";
 
 export type TUseCommentModal = {
   onClose: () => void;
