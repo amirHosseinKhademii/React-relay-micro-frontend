@@ -6,8 +6,8 @@ export const Users = () => {
 
   return (
     <div className="rounded p-4 shadow-md flex flex-col space-y-2 bg-slate-400 antialiased w-full ">
-      {data?.users?.edges?.map(({ node: user }) => (
-        <User key={user?.id} {...{ user }} />
+      {data?.users?.edges?.map((user) => (
+        <User key={user.cursor} {...{ user }} />
       ))}
     </div>
   );

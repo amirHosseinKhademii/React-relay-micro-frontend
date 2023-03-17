@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2905de5a5f746b1bd010da6025e0433c>>
+ * @generated SignedSource<<603dbd1eb1e56ad9ee31f26f2d1e45db>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,7 +21,7 @@ export type UserFollowMutation$data = {
   readonly followOrUnfollow: {
     readonly clientMutationId: string | null;
     readonly user: {
-      readonly " $fragmentSpreads": FragmentRefs<"UsersBaseFragment">;
+      readonly " $fragmentSpreads": FragmentRefs<"UserFragment">;
     };
   } | null;
 };
@@ -79,7 +79,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "UsersBaseFragment"
+                "name": "UserFragment"
               }
             ],
             "storageKey": null
@@ -158,16 +158,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d2e42564fced5efd4da88053056e5328",
+    "cacheID": "ce0d2d2fa9916b5fe0004b104d9f28f1",
     "id": null,
     "metadata": {},
     "name": "UserFollowMutation",
     "operationKind": "mutation",
-    "text": "mutation UserFollowMutation(\n  $input: FollowOrUnfollowInput!\n) {\n  followOrUnfollow(input: $input) {\n    clientMutationId\n    user {\n      ...UsersBaseFragment\n      id\n    }\n  }\n}\n\nfragment UsersBaseFragment on User {\n  id\n  userName\n  fullName\n  followers\n  followings\n}\n"
+    "text": "mutation UserFollowMutation(\n  $input: FollowOrUnfollowInput!\n) {\n  followOrUnfollow(input: $input) {\n    clientMutationId\n    user {\n      ...UserFragment\n      id\n    }\n  }\n}\n\nfragment UserFragment on User {\n  id\n  userName\n  fullName\n  followers\n  followings\n}\n"
   }
 };
 })();
 
-(node as any).hash = "cc1b29189957cbd9e3fe91772810c030";
+(node as any).hash = "41a061d7e07d5c52bd2b0b2da3e2aef7";
 
 export default node;

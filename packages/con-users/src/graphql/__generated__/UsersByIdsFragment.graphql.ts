@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3fc6c2146c40dbdbcfea66f4f193df77>>
+ * @generated SignedSource<<a018b65497a6878276fb2d1c54ae4399>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,10 +14,9 @@ export type UsersByIdsFragment$data = {
   readonly usersByIds: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
+      readonly cursor: string | null;
       readonly node: {
-        readonly fullName: string;
-        readonly id: string;
-        readonly userName: string;
+        readonly " $fragmentSpreads": FragmentRefs<"UserByIdFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -152,31 +151,22 @@ return {
             {
               "alias": null,
               "args": null,
+              "kind": "ScalarField",
+              "name": "cursor",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
               "concreteType": "User",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
               "selections": [
                 {
-                  "alias": null,
                   "args": null,
-                  "kind": "ScalarField",
-                  "name": "id",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "userName",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "fullName",
-                  "storageKey": null
+                  "kind": "FragmentSpread",
+                  "name": "UserByIdFragment"
                 },
                 {
                   "alias": null,
@@ -186,13 +176,6 @@ return {
                   "storageKey": null
                 }
               ],
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "cursor",
               "storageKey": null
             }
           ],
@@ -219,6 +202,6 @@ return {
 };
 })();
 
-(node as any).hash = "1e5b195598dce5cb14fe4796de91890a";
+(node as any).hash = "1a0d6971eb9e0507a218fc0de7a39d34";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0506b2d4eb3e5a79dc4c69f205916c5e>>
+ * @generated SignedSource<<795906328ce4c8d91551b916fca0d6cd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,12 +14,9 @@ export type UsersFragment$data = {
   readonly users: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
+      readonly cursor: string | null;
       readonly node: {
-        readonly followers: ReadonlyArray<string>;
-        readonly followings: ReadonlyArray<string>;
-        readonly fullName: string;
-        readonly id: string;
-        readonly userName: string;
+        readonly " $fragmentSpreads": FragmentRefs<"UserFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -144,45 +141,22 @@ return {
             {
               "alias": null,
               "args": null,
+              "kind": "ScalarField",
+              "name": "cursor",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
               "concreteType": "User",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
               "selections": [
                 {
-                  "alias": null,
                   "args": null,
-                  "kind": "ScalarField",
-                  "name": "id",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "userName",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "fullName",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "followers",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "followings",
-                  "storageKey": null
+                  "kind": "FragmentSpread",
+                  "name": "UserFragment"
                 },
                 {
                   "alias": null,
@@ -192,13 +166,6 @@ return {
                   "storageKey": null
                 }
               ],
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "cursor",
               "storageKey": null
             }
           ],
@@ -225,6 +192,6 @@ return {
 };
 })();
 
-(node as any).hash = "94d7b82d296d9ad684c3af47aff3c65a";
+(node as any).hash = "0411114ff8e95e10b7f9241636069a54";
 
 export default node;

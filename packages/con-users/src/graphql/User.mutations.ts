@@ -5,7 +5,7 @@ export const UserFollowMutation = graphql`
     followOrUnfollow(input: $input) {
       clientMutationId
       user {
-        ...UsersBaseFragment
+        ...UserFragment
       }
     }
   }

@@ -2,7 +2,7 @@ import { useLazyLoadQuery, usePaginationFragment } from "react-relay";
 import { UsersByIdsQuery } from "../graphql/Users.queries";
 import { UsersByIdsQuery as TUsersByIdsQuery } from "../graphql/__generated__/UsersByIdsQuery.graphql";
 import { UsersByIdsPaginationFrgament } from "../graphql/__generated__/UsersByIdsPaginationFrgament.graphql";
-import { UsersByIdsFragment } from "../graphql/Users.fragment";
+import { UsersByIdsFragment } from "../graphql/Users.fragments";
 import { UsersByIdsFragment$key } from "../graphql/__generated__/UsersByIdsFragment.graphql";
 import { useTransition } from "react";
 

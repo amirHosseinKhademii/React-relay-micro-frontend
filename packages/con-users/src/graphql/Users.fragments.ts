@@ -1,15 +1,5 @@
 import { graphql } from "react-relay";
 
-export const UsersBaseFragment = graphql`
-  fragment UsersBaseFragment on User {
-    id
-    userName
-    fullName
-    followers
-    followings
-  }
-`;
-
 export const UsersByIdsFragment = graphql`
   fragment UsersByIdsFragment on Query
   @refetchable(queryName: "UsersByIdsPaginationFrgament") {
@@ -25,10 +15,9 @@ export const UsersByIdsFragment = graphql`
         hasNextPage
       }
       edges {
+        cursor
         node {
-          id
-          userName
-          fullName
+          ...UserByIdFragment
         }
       }
     }
@@ -45,12 +34,9 @@ export const UsersFragment = graphql`
         hasNextPage
       }
       edges {
+        cursor
         node {
-          id
-          userName
-          fullName
-          followers
-          followings
+          ...UserFragment
         }
       }
     }

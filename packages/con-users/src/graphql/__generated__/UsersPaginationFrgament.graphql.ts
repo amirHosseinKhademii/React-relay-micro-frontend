@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8d0799fe35f4d55e32d9179ea1cbe2ed>>
+ * @generated SignedSource<<1e130df214b15f3a23c6f5837a8cf232>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -149,6 +149,13 @@ return {
               {
                 "alias": null,
                 "args": null,
+                "kind": "ScalarField",
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
                 "concreteType": "User",
                 "kind": "LinkedField",
                 "name": "node",
@@ -198,13 +205,6 @@ return {
                   }
                 ],
                 "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "cursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -236,16 +236,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "764fe46d51bf2748472131325f77d5ff",
+    "cacheID": "84279a750a1d517b813f50accd79d686",
     "id": null,
     "metadata": {},
     "name": "UsersPaginationFrgament",
     "operationKind": "query",
-    "text": "query UsersPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        followers\n        followings\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query UsersPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UserFragment on User {\n  id\n  userName\n  fullName\n  followers\n  followings\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...UserFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "94d7b82d296d9ad684c3af47aff3c65a";
+(node as any).hash = "0411114ff8e95e10b7f9241636069a54";
 
 export default node;

@@ -1,47 +1,56 @@
 import { useId, useState } from "react";
-import { useMutation } from "react-relay";
+import { useFragment, useMutation } from "react-relay";
 import { UserFollowMutation } from "../graphql/User.mutations";
 import { UserFollowMutation as TUserFollowMutation } from "../graphql/__generated__/UserFollowMutation.graphql";
 import { useRecoilValue } from "recoil";
 import { authAtom } from "pcg-commons";
+import { FragmentRefs } from "relay-runtime";
+import { UserFragment } from "../graphql/User.fragments";
+import { UserFragment$key } from "../graphql/__generated__/UserFragment.graphql";
 
 export type TUser = {
-  readonly followers: readonly string[];
-  readonly followings: readonly string[];
-  readonly fullName: string;
-  readonly id: string;
-  readonly userName: string;
-} | null;
+  user: {
+    readonly cursor: string | null;
+    readonly node: {
+      readonly " $fragmentSpreads": FragmentRefs<"UserFragment">;
+    } | null;
+  };
+};
 
-export const useUser = () => {
+export const useUser = ({ user }: TUser) => {
+  const userFragment = useFragment<UserFragment$key>(UserFragment, user.node);
+
   const [followUser] = useMutation<TUserFollowMutation>(UserFollowMutation);
 
   const clientMutationId = useId();
 
   const { user: userId } = useRecoilValue(authAtom);
+
   const [isMessagesOpen, setisMessagesOpen] = useState(false);
+
   const onMessagesToggle = () => setisMessagesOpen((prev) => !prev);
 
   return {
+    userFragment,
     userId,
     isMessagesOpen,
     onMessagesToggle,
-    onFollow: (user: TUser) => {
+    onFollow: () => {
       followUser({
         variables: {
           input: {
-            id: user?.id!,
+            id: userFragment?.id!,
             clientMutationId,
           },
         },
         optimisticResponse: {
           followOrUnfollow: {
             user: {
-              followers: user?.followers!,
-              followings: user?.followings!,
-              fullName: user?.fullName,
-              id: user?.id!,
-              userName: user?.userName,
+              followers: userFragment?.followers!,
+              followings: userFragment?.followings!,
+              fullName: userFragment?.fullName,
+              id: userFragment?.id!,
+              userName: userFragment?.userName,
             },
             clientMutationId,
           },

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a7519ec5a3e0b6f7a32683118a848219>>
+ * @generated SignedSource<<48d987ddcca7c4eb66462c2f371f98c6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -160,6 +160,13 @@ return {
               {
                 "alias": null,
                 "args": null,
+                "kind": "ScalarField",
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
                 "concreteType": "User",
                 "kind": "LinkedField",
                 "name": "node",
@@ -195,13 +202,6 @@ return {
                   }
                 ],
                 "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "cursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -235,16 +235,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e19462820c8ca83185faca4349a7d0b7",
+    "cacheID": "06c21a09c3ec4703f2ba13c1fa02dc84",
     "id": null,
     "metadata": {},
     "name": "UsersByIdsPaginationFrgament",
     "operationKind": "query",
-    "text": "query UsersByIdsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $ids: [ID!]!\n  $last: Float\n) {\n  ...UsersByIdsFragment\n}\n\nfragment UsersByIdsFragment on Query {\n  usersByIds(before: $before, after: $after, first: $first, last: $last, ids: $ids) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query UsersByIdsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $ids: [ID!]!\n  $last: Float\n) {\n  ...UsersByIdsFragment\n}\n\nfragment UserByIdFragment on User {\n  id\n  userName\n  fullName\n}\n\nfragment UsersByIdsFragment on Query {\n  usersByIds(before: $before, after: $after, first: $first, last: $last, ids: $ids) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...UserByIdFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "1e5b195598dce5cb14fe4796de91890a";
+(node as any).hash = "1a0d6971eb9e0507a218fc0de7a39d34";
 
 export default node;

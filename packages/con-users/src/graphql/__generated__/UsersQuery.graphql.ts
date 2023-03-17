@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<86cd251e5221151e95eb4ad6eb55ea58>>
+ * @generated SignedSource<<85e5e46180c38fff1c3abe3def858ada>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -157,6 +157,13 @@ return {
               {
                 "alias": null,
                 "args": null,
+                "kind": "ScalarField",
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
                 "concreteType": "User",
                 "kind": "LinkedField",
                 "name": "node",
@@ -206,13 +213,6 @@ return {
                   }
                 ],
                 "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "cursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -244,12 +244,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "625e2000ce13e780efcceaac316b9369",
+    "cacheID": "830ccf9d71c67d10b33ad7e00930b188",
     "id": null,
     "metadata": {},
     "name": "UsersQuery",
     "operationKind": "query",
-    "text": "query UsersQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        userName\n        fullName\n        followers\n        followings\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query UsersQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...UsersFragment\n}\n\nfragment UserFragment on User {\n  id\n  userName\n  fullName\n  followers\n  followings\n}\n\nfragment UsersFragment on Query {\n  users(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...UserFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
