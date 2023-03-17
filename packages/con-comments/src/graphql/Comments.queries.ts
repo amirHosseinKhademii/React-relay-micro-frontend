@@ -8,6 +8,6 @@ export const CommentsQuery = graphql`
     $last: Float
     $cardId: ID!
   ) {
-    ...CommentsQueryFragment
+    ...CommentsFragment
   }
 `;

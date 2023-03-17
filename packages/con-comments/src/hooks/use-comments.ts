@@ -2,10 +2,10 @@ import { useLazyLoadQuery, usePaginationFragment } from "react-relay";
 import { useState, useTransition } from "react";
 import { CommentsQuery } from "../graphql/Comments.queries";
 import { CommentsPaginationFrgament } from "../graphql/__generated__/CommentsPaginationFrgament.graphql";
-import { CommentsQueryFragment } from "../graphql/Comment.fragments";
 
 import type { CommentsQuery as TCommentsQuery } from "../graphql/__generated__/CommentsQuery.graphql";
-import type { CommentsQueryFragment$key } from "../graphql/__generated__/CommentsQueryFragment.graphql";
+import type { CommentsFragment$key } from "../graphql/__generated__/CommentsFragment.graphql";
+import { CommentsFragment } from "../graphql/Comments.fragment";
 
 export const useComments = (cardId: string) => {
   const [isPending, startTransition] = useTransition();
@@ -17,8 +17,8 @@ export const useComments = (cardId: string) => {
 
   const { data, loadNext } = usePaginationFragment<
     CommentsPaginationFrgament,
-    CommentsQueryFragment$key
-  >(CommentsQueryFragment, comments);
+    CommentsFragment$key
+  >(CommentsFragment, comments);
 
   const [isOpen, setIsOpen] = useState(false);
 

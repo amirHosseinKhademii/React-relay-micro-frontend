@@ -1,7 +1,7 @@
 import { graphql } from "react-relay";
 
-export const CommentsQueryFragment = graphql`
-  fragment CommentsQueryFragment on Query
+export const CommentsFragment = graphql`
+  fragment CommentsFragment on Query
   @refetchable(queryName: "CommentsPaginationFrgament") {
     comments(
       before: $before
@@ -21,16 +21,5 @@ export const CommentsQueryFragment = graphql`
         }
       }
     }
-  }
-`;
-
-export const CommentFragment = graphql`
-  fragment CommentFragment on Comment {
-    id
-    title
-    description
-    likes
-    created_at
-    updated_at
   }
 `;

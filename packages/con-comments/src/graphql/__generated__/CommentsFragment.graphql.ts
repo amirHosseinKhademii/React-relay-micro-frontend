@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<03119a7b06b3dbac4c6603b48f3b2cdd>>
+ * @generated SignedSource<<554ce32e45e617449bb1f14a983acb97>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,7 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type CommentsQueryFragment$data = {
+export type CommentsFragment$data = {
   readonly comments: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
@@ -23,11 +23,11 @@ export type CommentsQueryFragment$data = {
       readonly hasNextPage: boolean;
     } | null;
   };
-  readonly " $fragmentType": "CommentsQueryFragment";
+  readonly " $fragmentType": "CommentsFragment";
 };
-export type CommentsQueryFragment$key = {
-  readonly " $data"?: CommentsQueryFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"CommentsQueryFragment">;
+export type CommentsFragment$key = {
+  readonly " $data"?: CommentsFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentsFragment">;
 };
 
 import CommentsPaginationFrgament_graphql from './CommentsPaginationFrgament.graphql';
@@ -85,7 +85,7 @@ return {
       "operation": CommentsPaginationFrgament_graphql
     }
   },
-  "name": "CommentsQueryFragment",
+  "name": "CommentsFragment",
   "selections": [
     {
       "alias": "comments",
@@ -202,6 +202,6 @@ return {
 };
 })();
 
-(node as any).hash = "c6ebb4f380ee6224600d2278f84de072";
+(node as any).hash = "a82c539bc3b0f0fb3518f87e2e9799eb";
 
 export default node;

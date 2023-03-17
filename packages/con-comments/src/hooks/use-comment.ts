@@ -9,7 +9,7 @@ import { CommentLikeMutation as TCommentLikeMutation } from "../graphql/__genera
 import { useRecoilValue } from "recoil";
 import { authAtom } from "pcg-commons";
 import { FragmentRefs } from "relay-runtime";
-import { CommentFragment } from "../graphql/Comment.fragments";
+import { CommentFragment } from "../graphql/Comment.fragment";
 import {
   CommentFragment$data,
   CommentFragment$key,

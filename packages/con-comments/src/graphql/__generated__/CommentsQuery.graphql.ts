@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b7d9f4f8a37a2f36078e2aeeee1cd696>>
+ * @generated SignedSource<<89b463d65497ac934affd0b7338a5a14>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,7 +18,7 @@ export type CommentsQuery$variables = {
   last?: number | null;
 };
 export type CommentsQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"CommentsQueryFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentsFragment">;
 };
 export type CommentsQuery = {
   response: CommentsQuery$data;
@@ -94,7 +94,7 @@ return {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "CommentsQueryFragment"
+        "name": "CommentsFragment"
       }
     ],
     "type": "Query",
@@ -266,16 +266,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "b8f6b1f2409fbfe8144fadb49a8afa17",
+    "cacheID": "607647a0bce74391316f8bc03445f939",
     "id": null,
     "metadata": {},
     "name": "CommentsQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n  created_at\n  updated_at\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
+    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsFragment\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n  created_at\n  updated_at\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f6007b37135d960204e80920e6a7ec5b";
+(node as any).hash = "3dc0558bf03731e35201317c713f1663";
 
 export default node;
