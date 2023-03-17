@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bbd98f09ba4bda7b1f7388633ffc197a>>
+ * @generated SignedSource<<2df3cea7243d7a20242345ffde5bc6a9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,7 +21,7 @@ export type CommentLikeMutation$data = {
   readonly likeComment: {
     readonly clientMutationId: string | null;
     readonly comment: {
-      readonly " $fragmentSpreads": FragmentRefs<"CommentDateFragment" | "CommentFragment">;
+      readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
     };
   } | null;
 };
@@ -80,11 +80,6 @@ return {
                 "args": null,
                 "kind": "FragmentSpread",
                 "name": "CommentFragment"
-              },
-              {
-                "args": null,
-                "kind": "FragmentSpread",
-                "name": "CommentDateFragment"
               }
             ],
             "storageKey": null
@@ -146,20 +141,6 @@ return {
                 "kind": "ScalarField",
                 "name": "likes",
                 "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "created_at",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "updated_at",
-                "storageKey": null
               }
             ],
             "storageKey": null
@@ -170,16 +151,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d4f0de5da2aaebc271bd64b9bb523a51",
+    "cacheID": "5e0dc17fe1077e66f518011b4eadc019",
     "id": null,
     "metadata": {},
     "name": "CommentLikeMutation",
     "operationKind": "mutation",
-    "text": "mutation CommentLikeMutation(\n  $input: LikeCommentInput!\n) {\n  likeComment(input: $input) {\n    clientMutationId\n    comment {\n      ...CommentFragment\n      ...CommentDateFragment\n      id\n    }\n  }\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n"
+    "text": "mutation CommentLikeMutation(\n  $input: LikeCommentInput!\n) {\n  likeComment(input: $input) {\n    clientMutationId\n    comment {\n      ...CommentFragment\n      id\n    }\n  }\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n"
   }
 };
 })();
 
-(node as any).hash = "1dda75e97e1e17fe7429a0ef9bccf469";
+(node as any).hash = "c42a84c5c044ee78ae5b1b7e564ac3a9";
 
 export default node;
