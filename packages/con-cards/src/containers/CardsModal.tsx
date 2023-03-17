@@ -1,5 +1,5 @@
 import { Modal } from "pcg-commons";
-import { TUseCards, useCardsModal } from "./hooks";
+import { TUseCards, useCardsModal } from "../hooks";
 
 export const CardsModal = ({ onClose, __id, todoId }: TUseCards) => {
   const { onSubmit } = useCardsModal({ onClose, __id, todoId });

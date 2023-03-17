@@ -1,6 +1,6 @@
 import { ICUnDone, ICTrash, ICDone, ICComments } from "pcg-commons";
 import { Suspense } from "react";
-import { TCard, useCard } from "./hooks/use-card";
+import { TCard, useCard } from "../hooks";
 import { Comments } from "con-comments";
 
 export const Card = ({ card, __id }: TCard) => {
