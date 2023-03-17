@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6b46958a459e89d34cc5b449d5fc6661>>
+ * @generated SignedSource<<219872756b7869907c2a0ab17bb6bb0c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -53,6 +53,11 @@ return {
     {
       "kind": "RootArgument",
       "name": "first"
+    },
+    {
+      "defaultValue": null,
+      "kind": "LocalArgument",
+      "name": "isDate"
     },
     {
       "kind": "RootArgument",
@@ -169,9 +174,16 @@ return {
                   "name": "CommentFragment"
                 },
                 {
-                  "args": null,
-                  "kind": "FragmentSpread",
-                  "name": "CommentDateFragment"
+                  "condition": "isDate",
+                  "kind": "Condition",
+                  "passingValue": true,
+                  "selections": [
+                    {
+                      "args": null,
+                      "kind": "FragmentSpread",
+                      "name": "CommentDateFragment"
+                    }
+                  ]
                 },
                 {
                   "alias": null,
@@ -207,6 +219,6 @@ return {
 };
 })();
 
-(node as any).hash = "ada6bc041c58f1b3364520d1d6ab2465";
+(node as any).hash = "a670a842b3e994cd1a9bd99bdf56538e";
 
 export default node;

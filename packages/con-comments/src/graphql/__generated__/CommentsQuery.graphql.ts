@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<83eac44dcf54fb7e892a110fb6750d32>>
+ * @generated SignedSource<<d153eabe995edd5737391b3da6d2a042>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,6 +15,7 @@ export type CommentsQuery$variables = {
   before?: string | null;
   cardId: string;
   first?: number | null;
+  isDate: boolean;
   last?: number | null;
 };
 export type CommentsQuery$data = {
@@ -49,9 +50,14 @@ v3 = {
 v4 = {
   "defaultValue": null,
   "kind": "LocalArgument",
+  "name": "isDate"
+},
+v5 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
   "name": "last"
 },
-v5 = [
+v6 = [
   {
     "kind": "Variable",
     "name": "after",
@@ -85,14 +91,21 @@ return {
       (v1/*: any*/),
       (v2/*: any*/),
       (v3/*: any*/),
-      (v4/*: any*/)
+      (v4/*: any*/),
+      (v5/*: any*/)
     ],
     "kind": "Fragment",
     "metadata": null,
     "name": "CommentsQuery",
     "selections": [
       {
-        "args": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "isDate",
+            "variableName": "isDate"
+          }
+        ],
         "kind": "FragmentSpread",
         "name": "CommentsFragment"
       }
@@ -106,15 +119,16 @@ return {
       (v1/*: any*/),
       (v0/*: any*/),
       (v3/*: any*/),
-      (v4/*: any*/),
-      (v2/*: any*/)
+      (v5/*: any*/),
+      (v2/*: any*/),
+      (v4/*: any*/)
     ],
     "kind": "Operation",
     "name": "CommentsQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v5/*: any*/),
+        "args": (v6/*: any*/),
         "concreteType": "CommentConnection",
         "kind": "LinkedField",
         "name": "comments",
@@ -211,18 +225,25 @@ return {
                     "storageKey": null
                   },
                   {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "created_at",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "updated_at",
-                    "storageKey": null
+                    "condition": "isDate",
+                    "kind": "Condition",
+                    "passingValue": true,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "created_at",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "updated_at",
+                        "storageKey": null
+                      }
+                    ]
                   },
                   {
                     "alias": null,
@@ -254,7 +275,7 @@ return {
       },
       {
         "alias": null,
-        "args": (v5/*: any*/),
+        "args": (v6/*: any*/),
         "filters": [
           "cardId"
         ],
@@ -266,16 +287,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "f9ee4d5dfabe7b9b8f5dc6c60cd1b662",
+    "cacheID": "7b6740d383f7b27099b7280dca44746f",
     "id": null,
     "metadata": {},
     "name": "CommentsQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsFragment\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
+    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n  $isDate: Boolean!\n) {\n  ...CommentsFragment_Sa9a9\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n\nfragment CommentsFragment_Sa9a9 on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment @include(if: $isDate)\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "3dc0558bf03731e35201317c713f1663";
+(node as any).hash = "89a0d8b7ef1f6eed6b8f1f368748c5cc";
 
 export default node;

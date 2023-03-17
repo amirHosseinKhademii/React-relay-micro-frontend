@@ -26,19 +26,16 @@ export const Comment = ({ comment, __id, children }: TComment) => {
             {isLiked ? (
               <ICHeartFill
                 className="text-red-500 w-5"
-                onClick={() => onLike(commentFragment!)}
+                onClick={() => onLike()}
               />
             ) : (
               <ICHeartOutline
                 className="text-red-500 w-5"
-                onClick={() => onLike(commentFragment!)}
+                onClick={() => onLike()}
               />
             )}
           </div>
-          <ICTrash
-            className="text-red-600 w-5"
-            onClick={() => onDelete(commentFragment?.id!)}
-          />
+          <ICTrash className="text-red-600 w-5" onClick={() => onDelete()} />
         </div>
       </div>
       <span className="text-[9px] text-gray-800">

@@ -7,7 +7,8 @@ export const CommentsQuery = graphql`
     $first: Float
     $last: Float
     $cardId: ID!
+    $isDate: Boolean!
   ) {
-    ...CommentsFragment
+    ...CommentsFragment @arguments(isDate: $isDate)
   }
 `;

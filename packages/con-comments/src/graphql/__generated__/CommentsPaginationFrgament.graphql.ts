@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<197d62e42edaacac94037b94a1c8b82d>>
+ * @generated SignedSource<<ff345db22d56fd3cbf4d018c2017cc3e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,6 +15,7 @@ export type CommentsPaginationFrgament$variables = {
   before?: string | null;
   cardId: string;
   first?: number | null;
+  isDate: boolean;
   last?: number | null;
 };
 export type CommentsPaginationFrgament$data = {
@@ -46,6 +47,11 @@ var v0 = [
     "defaultValue": null,
     "kind": "LocalArgument",
     "name": "first"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "isDate"
   },
   {
     "defaultValue": null,
@@ -88,7 +94,13 @@ return {
     "name": "CommentsPaginationFrgament",
     "selections": [
       {
-        "args": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "isDate",
+            "variableName": "isDate"
+          }
+        ],
         "kind": "FragmentSpread",
         "name": "CommentsFragment"
       }
@@ -201,18 +213,25 @@ return {
                     "storageKey": null
                   },
                   {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "created_at",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "updated_at",
-                    "storageKey": null
+                    "condition": "isDate",
+                    "kind": "Condition",
+                    "passingValue": true,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "created_at",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "updated_at",
+                        "storageKey": null
+                      }
+                    ]
                   },
                   {
                     "alias": null,
@@ -256,16 +275,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c44aa1c4baae8f92f49fa1c4781f4d9a",
+    "cacheID": "eeb04f2ebe6602ee2e2b6b9ce5099376",
     "id": null,
     "metadata": {},
     "name": "CommentsPaginationFrgament",
     "operationKind": "query",
-    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsFragment\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
+    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $isDate: Boolean!\n  $last: Float\n) {\n  ...CommentsFragment_Sa9a9\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n\nfragment CommentsFragment_Sa9a9 on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment @include(if: $isDate)\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ada6bc041c58f1b3364520d1d6ab2465";
+(node as any).hash = "a670a842b3e994cd1a9bd99bdf56538e";
 
 export default node;

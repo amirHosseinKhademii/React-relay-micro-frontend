@@ -31,7 +31,11 @@ export const Card = ({ card, __id, children }: TCard) => {
         </div>
       </div>
       {isComments && (
-        <Suspense fallback={<div>Loading comments...</div>}>
+        <Suspense
+          fallback={
+            <div className=" p-2 w-full h-20 animate-pulse rounded border bg-cyan-300 "></div>
+          }
+        >
           <Comments cardId={cardFragment?.id!} />
         </Suspense>
       )}

@@ -10,9 +10,14 @@ import { CommentsFragment } from "../graphql/Comments.fragment";
 export const useComments = (cardId: string) => {
   const [isPending, startTransition] = useTransition();
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [includeDate, setIncludeDate] = useState(false);
+
   const comments = useLazyLoadQuery<TCommentsQuery>(CommentsQuery, {
     first: 1,
     cardId,
+    isDate: includeDate,
   });
 
   const { data, loadNext } = usePaginationFragment<
@@ -20,15 +25,18 @@ export const useComments = (cardId: string) => {
     CommentsFragment$key
   >(CommentsFragment, comments);
 
-  const [isOpen, setIsOpen] = useState(false);
-
   const onOpen = (e: any) => {
     e.stopPropagation();
     setIsOpen(true);
   };
   const onClose = () => setIsOpen(false);
 
+  const onIncludeDateToggle = (isIncludeDate: boolean) =>
+    setIncludeDate(isIncludeDate);
+
   return {
+    onIncludeDateToggle,
+    includeDate,
     data,
     isPending,
     isOpen,

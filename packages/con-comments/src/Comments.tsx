@@ -4,15 +4,28 @@ import { CommentModal, Comment, CommentDate } from "./containers";
 import { useComments } from "./hooks";
 
 export const Comments = ({ cardId }: { cardId: string }) => {
-  const { data, onLoadMore, isPending, onOpen, isOpen, onClose } =
-    useComments(cardId);
+  const {
+    data,
+    onLoadMore,
+    isPending,
+    onOpen,
+    isOpen,
+    onClose,
+    includeDate,
+    onIncludeDateToggle,
+  } = useComments(cardId);
 
   return (
     <>
-      <div className="  w-full">
+      <div className="w-full">
         <ICPlus
           className=" mb-2 p-2 w-8 text-gray-600 ml-auto cursor-pointer "
           onClick={onOpen}
+        />
+        <input
+          type="checkbox"
+          checked={includeDate}
+          onChange={(e: any) => onIncludeDateToggle(e.target.checked)}
         />
         <div className="flex flex-col space-y-2 my-2">
           {data?.comments?.edges?.map((comment) => (
@@ -21,7 +34,7 @@ export const Comments = ({ cardId }: { cardId: string }) => {
               key={comment.cursor}
               __id={data.comments.__id}
             >
-              <CommentDate {...{ comment }} />
+              {includeDate && <CommentDate {...{ comment }} />}
             </Comment>
           ))}
         </div>
