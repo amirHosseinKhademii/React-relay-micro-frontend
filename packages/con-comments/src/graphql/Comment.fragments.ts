@@ -26,15 +26,22 @@ export const CommentsQueryFragment = graphql`
         hasNextPage
       }
       edges {
+        cursor
         node {
-          id
-          title
-          description
-          created_at
-          updated_at
-          likes
+          ...CommentFragment
         }
       }
     }
+  }
+`;
+
+export const CommentFragment = graphql`
+  fragment CommentFragment on Comment {
+    id
+    title
+    description
+    likes
+    created_at
+    updated_at
   }
 `;

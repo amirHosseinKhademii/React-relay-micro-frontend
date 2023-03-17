@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<402dda39d32fae902d94953a20bbf008>>
+ * @generated SignedSource<<78ce41951e327136f4fa84ec3e01bfff>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -160,6 +160,13 @@ return {
               {
                 "alias": null,
                 "args": null,
+                "kind": "ScalarField",
+                "name": "cursor",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
                 "concreteType": "Comment",
                 "kind": "LinkedField",
                 "name": "node",
@@ -190,6 +197,13 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
+                    "name": "likes",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "created_at",
                     "storageKey": null
                   },
@@ -204,24 +218,10 @@ return {
                     "alias": null,
                     "args": null,
                     "kind": "ScalarField",
-                    "name": "likes",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
                     "name": "__typename",
                     "storageKey": null
                   }
                 ],
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "cursor",
                 "storageKey": null
               }
             ],
@@ -256,16 +256,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "2b2eb554c4887d47ddcb9ad876b302a2",
+    "cacheID": "1256bb7a77ae4248d5d96af8f85a546e",
     "id": null,
     "metadata": {},
     "name": "CommentsPaginationFrgament",
     "operationKind": "query",
-    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        id\n        title\n        description\n        created_at\n        updated_at\n        likes\n        __typename\n      }\n      cursor\n    }\n  }\n}\n"
+    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsQueryFragment\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n  created_at\n  updated_at\n}\n\nfragment CommentsQueryFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e30416272114f4dbc27c65b2f8c3486a";
+(node as any).hash = "c6ebb4f380ee6224600d2278f84de072";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0f4f93d0eed66198d0b864718c46b1bc>>
+ * @generated SignedSource<<03119a7b06b3dbac4c6603b48f3b2cdd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,13 +14,9 @@ export type CommentsQueryFragment$data = {
   readonly comments: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
+      readonly cursor: string | null;
       readonly node: {
-        readonly created_at: any | null;
-        readonly description: string | null;
-        readonly id: string;
-        readonly likes: ReadonlyArray<string>;
-        readonly title: string;
-        readonly updated_at: any | null;
+        readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -155,52 +151,22 @@ return {
             {
               "alias": null,
               "args": null,
+              "kind": "ScalarField",
+              "name": "cursor",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
               "concreteType": "Comment",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
               "selections": [
                 {
-                  "alias": null,
                   "args": null,
-                  "kind": "ScalarField",
-                  "name": "id",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "title",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "description",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "created_at",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "updated_at",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "likes",
-                  "storageKey": null
+                  "kind": "FragmentSpread",
+                  "name": "CommentFragment"
                 },
                 {
                   "alias": null,
@@ -210,13 +176,6 @@ return {
                   "storageKey": null
                 }
               ],
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "cursor",
               "storageKey": null
             }
           ],
@@ -243,6 +202,6 @@ return {
 };
 })();
 
-(node as any).hash = "e30416272114f4dbc27c65b2f8c3486a";
+(node as any).hash = "c6ebb4f380ee6224600d2278f84de072";
 
 export default node;

@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import { useMutation } from "react-relay";
+import { useFragment, useMutation } from "react-relay";
 import { CommentDeleteMutation as TCommentDeleteMutation } from "../graphql/__generated__/CommentDeleteMutation.graphql";
 import {
   CommentDeleteMutation,
@@ -8,23 +8,27 @@ import {
 import { CommentLikeMutation as TCommentLikeMutation } from "../graphql/__generated__/CommentLikeMutation.graphql";
 import { useRecoilValue } from "recoil";
 import { authAtom } from "pcg-commons";
+import { FragmentRefs } from "relay-runtime";
+import { CommentFragment } from "../graphql/Comment.fragments";
+import { CommentFragment$key } from "../graphql/__generated__/CommentFragment.graphql";
 
 export type TComment = {
   __id?: string;
   comment: {
+    readonly cursor: string | null;
     readonly node: {
-      readonly created_at: any;
-      readonly description: string | null;
-      readonly id: string;
-      readonly title: string;
-      readonly updated_at: any;
-      readonly likes: readonly string[];
+      readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
     } | null;
   };
 };
 
 export const useComment = ({ __id, comment }: TComment) => {
   const { user } = useRecoilValue(authAtom);
+
+  const commentFragment = useFragment<CommentFragment$key>(
+    CommentFragment,
+    comment.node
+  );
 
   const [deleteComment] = useMutation<TCommentDeleteMutation>(
     CommentDeleteMutation
@@ -42,6 +46,7 @@ export const useComment = ({ __id, comment }: TComment) => {
   };
 
   return {
+    commentFragment,
     isUsers,
     onUsersToggle,
     onDelete: (id: string) => {
@@ -61,29 +66,29 @@ export const useComment = ({ __id, comment }: TComment) => {
         },
       });
     },
-    onLike: (comment: TComment["comment"]) => {
+    onLike: () => {
       likeComment({
         variables: {
           input: {
-            id: comment.node?.id!,
+            id: commentFragment?.id!,
             clientMutationId,
           },
         },
         optimisticResponse: {
           likeComment: {
             comment: {
-              created_at: comment.node?.created_at,
-              description: comment.node?.description,
-              id: comment.node?.id!,
-              title: comment.node?.title,
-              updated_at: comment.node?.updated_at,
-              likes: [...comment.node?.likes!, "1"],
+              created_at: commentFragment?.created_at,
+              description: commentFragment?.description,
+              id: commentFragment?.id!,
+              title: commentFragment?.title,
+              updated_at: commentFragment?.updated_at,
+              likes: [...commentFragment?.likes!, "1"],
             },
             clientMutationId,
           },
         },
       });
     },
-    isLiked: comment.node?.likes?.includes(user!),
+    isLiked: commentFragment?.likes?.includes(user!),
   };
 };

@@ -18,7 +18,7 @@ export const Comments = ({ cardId }: { cardId: string }) => {
           {data?.comments?.edges?.map((comment) => (
             <Comment
               {...{ comment }}
-              key={comment.node?.id}
+              key={comment.cursor}
               __id={data.comments.__id}
             />
           ))}
