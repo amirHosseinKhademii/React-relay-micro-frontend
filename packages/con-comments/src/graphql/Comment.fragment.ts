@@ -6,6 +6,11 @@ export const CommentFragment = graphql`
     title
     description
     likes
+  }
+`;
+
+export const CommentDateFragment = graphql`
+  fragment CommentDateFragment on Comment {
     created_at
     updated_at
   }

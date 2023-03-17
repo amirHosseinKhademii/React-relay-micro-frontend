@@ -1,6 +1,6 @@
 import { ICLoadMore, ICPlus } from "pcg-commons";
-import { Comment } from "./Comment";
-import { CommentModal } from "./CommentModal";
+
+import { CommentModal, Comment, CommentDate } from "./containers";
 import { useComments } from "./hooks";
 
 export const Comments = ({ cardId }: { cardId: string }) => {
@@ -20,7 +20,9 @@ export const Comments = ({ cardId }: { cardId: string }) => {
               {...{ comment }}
               key={comment.cursor}
               __id={data.comments.__id}
-            />
+            >
+              <CommentDate {...{ comment }} />
+            </Comment>
           ))}
         </div>
 

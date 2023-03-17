@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { ReactNode, useId, useState } from "react";
 import { useFragment, useMutation } from "react-relay";
 import { CommentDeleteMutation as TCommentDeleteMutation } from "../graphql/__generated__/CommentDeleteMutation.graphql";
 import {
@@ -20,9 +20,12 @@ export type TComment = {
   comment: {
     readonly cursor: string | null;
     readonly node: {
-      readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
+      readonly " $fragmentSpreads": FragmentRefs<
+        "CommentDateFragment" | "CommentFragment"
+      >;
     } | null;
   };
+  children?: ReactNode;
 };
 
 export const useComment = ({ __id, comment }: TComment) => {
@@ -86,11 +89,11 @@ export const useComment = ({ __id, comment }: TComment) => {
         optimisticResponse: {
           likeComment: {
             comment: {
-              created_at: comment?.created_at,
+              //created_at: comment?.created_at,
               description: comment?.description,
               id: comment?.id!,
               title: comment?.title,
-              updated_at: comment?.updated_at,
+              // updated_at: comment?.updated_at,
               likes,
             },
             clientMutationId,

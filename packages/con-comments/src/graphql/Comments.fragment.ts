@@ -18,6 +18,7 @@ export const CommentsFragment = graphql`
         cursor
         node {
           ...CommentFragment
+          ...CommentDateFragment
         }
       }
     }

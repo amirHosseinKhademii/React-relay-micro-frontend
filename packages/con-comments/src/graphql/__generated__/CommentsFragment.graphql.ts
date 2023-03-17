@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<554ce32e45e617449bb1f14a983acb97>>
+ * @generated SignedSource<<6b46958a459e89d34cc5b449d5fc6661>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,7 +16,7 @@ export type CommentsFragment$data = {
     readonly edges: ReadonlyArray<{
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"CommentDateFragment" | "CommentFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -169,6 +169,11 @@ return {
                   "name": "CommentFragment"
                 },
                 {
+                  "args": null,
+                  "kind": "FragmentSpread",
+                  "name": "CommentDateFragment"
+                },
+                {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
@@ -202,6 +207,6 @@ return {
 };
 })();
 
-(node as any).hash = "a82c539bc3b0f0fb3518f87e2e9799eb";
+(node as any).hash = "ada6bc041c58f1b3364520d1d6ab2465";
 
 export default node;

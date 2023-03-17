@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2575ece947efd4be91b9f183eac5e242>>
+ * @generated SignedSource<<197d62e42edaacac94037b94a1c8b82d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -256,16 +256,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d2f04cefefe2d444538489b5eb81d6f9",
+    "cacheID": "c44aa1c4baae8f92f49fa1c4781f4d9a",
     "id": null,
     "metadata": {},
     "name": "CommentsPaginationFrgament",
     "operationKind": "query",
-    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsFragment\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n  created_at\n  updated_at\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
+    "text": "query CommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $cardId: ID!\n  $first: Float\n  $last: Float\n) {\n  ...CommentsFragment\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "a82c539bc3b0f0fb3518f87e2e9799eb";
+(node as any).hash = "ada6bc041c58f1b3364520d1d6ab2465";
 
 export default node;

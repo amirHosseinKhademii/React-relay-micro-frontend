@@ -1,9 +1,9 @@
 import { ICHeartFill, ICHeartOutline, ICTrash } from "pcg-commons";
 import { Suspense } from "react";
-import { TComment, useComment } from "./hooks/use-comment";
+import { TComment, useComment } from "../hooks/use-comment";
 import { UsersByIds } from "con-users";
 
-export const Comment = ({ comment, __id }: TComment) => {
+export const Comment = ({ comment, __id, children }: TComment) => {
   const { onDelete, onLike, isUsers, onUsersToggle, isLiked, commentFragment } =
     useComment({
       comment,
@@ -44,9 +44,7 @@ export const Comment = ({ comment, __id }: TComment) => {
       <span className="text-[9px] text-gray-800">
         {commentFragment?.description}
       </span>
-      <span className="text-[8px] text-blue-600">
-        {commentFragment?.created_at.slice(0, 10)}
-      </span>
+      {children}
 
       {isUsers && commentFragment?.likes.length !== 0 && (
         <Suspense fallback={<div>users Loading...</div>}>

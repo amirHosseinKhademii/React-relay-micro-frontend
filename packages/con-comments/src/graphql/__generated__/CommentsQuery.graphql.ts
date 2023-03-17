@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<89b463d65497ac934affd0b7338a5a14>>
+ * @generated SignedSource<<83eac44dcf54fb7e892a110fb6750d32>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -266,12 +266,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "607647a0bce74391316f8bc03445f939",
+    "cacheID": "f9ee4d5dfabe7b9b8f5dc6c60cd1b662",
     "id": null,
     "metadata": {},
     "name": "CommentsQuery",
     "operationKind": "query",
-    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsFragment\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n  created_at\n  updated_at\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
+    "text": "query CommentsQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n  $cardId: ID!\n) {\n  ...CommentsFragment\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n\nfragment CommentsFragment on Query {\n  comments(before: $before, after: $after, first: $first, last: $last, cardId: $cardId) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n"
   }
 };
 })();
