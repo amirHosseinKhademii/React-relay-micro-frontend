@@ -16,22 +16,11 @@ export const CardsFragment = graphql`
         hasNextPage
       }
       edges {
+        cursor
         node {
-          title
-          description
-          id
-          isCompleted
+          ...CardFragment
         }
       }
     }
-  }
-`;
-
-export const CardsBaseFragment = graphql`
-  fragment CardsBaseFragment on Card {
-    title
-    description
-    id
-    isCompleted
   }
 `;

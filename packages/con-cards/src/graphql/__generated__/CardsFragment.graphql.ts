@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bd1f1a28a3df17c4cf865663f952d932>>
+ * @generated SignedSource<<220edc30f27a177a848aa86a97805552>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,11 +14,9 @@ export type CardsFragment$data = {
   readonly cards: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
+      readonly cursor: string | null;
       readonly node: {
-        readonly description: string | null;
-        readonly id: string;
-        readonly isCompleted: boolean | null;
-        readonly title: string;
+        readonly " $fragmentSpreads": FragmentRefs<"CardFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -38,14 +36,7 @@ import TodoCardsPaginationFrgament_graphql from './TodoCardsPaginationFrgament.g
 const node: ReaderFragment = (function(){
 var v0 = [
   "cards"
-],
-v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-};
+];
 return {
   "argumentDefinitions": [
     {
@@ -158,32 +149,22 @@ return {
             {
               "alias": null,
               "args": null,
+              "kind": "ScalarField",
+              "name": "cursor",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
               "concreteType": "Card",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
               "selections": [
                 {
-                  "alias": null,
                   "args": null,
-                  "kind": "ScalarField",
-                  "name": "title",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "description",
-                  "storageKey": null
-                },
-                (v1/*: any*/),
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "isCompleted",
-                  "storageKey": null
+                  "kind": "FragmentSpread",
+                  "name": "CardFragment"
                 },
                 {
                   "alias": null,
@@ -193,13 +174,6 @@ return {
                   "storageKey": null
                 }
               ],
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "cursor",
               "storageKey": null
             }
           ],
@@ -220,13 +194,19 @@ return {
       ],
       "storageKey": null
     },
-    (v1/*: any*/)
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    }
   ],
   "type": "Todo",
   "abstractKey": null
 };
 })();
 
-(node as any).hash = "7fa66b887db19dbaaad03becf0652fe2";
+(node as any).hash = "ed286395c175606c4e2741424aa3f50d";
 
 export default node;

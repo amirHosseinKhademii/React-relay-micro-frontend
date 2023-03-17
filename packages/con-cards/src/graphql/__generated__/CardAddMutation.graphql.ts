@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8c314d7a7269b33682341f60b2f4da1f>>
+ * @generated SignedSource<<873c7eebf9f759e4a7e2bbd21c4880c1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,7 +25,7 @@ export type CardAddMutation$data = {
     readonly addCardEdge: {
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CardsBaseFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"CardFragment">;
       } | null;
     };
     readonly clientMutationId: string | null;
@@ -107,7 +107,7 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "CardsBaseFragment"
+                    "name": "CardFragment"
                   }
                 ],
                 "storageKey": null
@@ -218,16 +218,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "3d58d887bfe460ee7f57585df52d6e52",
+    "cacheID": "7c398190b1278e8cc357b24a6075eecf",
     "id": null,
     "metadata": {},
     "name": "CardAddMutation",
     "operationKind": "mutation",
-    "text": "mutation CardAddMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardsBaseFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardsBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n"
+    "text": "mutation CardAddMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n"
   }
 };
 })();
 
-(node as any).hash = "348578217339585b807dda1d412da693";
+(node as any).hash = "f4e152eb7d4968519e647aa4090b5926";
 
 export default node;

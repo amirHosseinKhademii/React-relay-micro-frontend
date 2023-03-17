@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6986111d50f64d3dfcaa53ce126dd8d4>>
+ * @generated SignedSource<<68ed6ccbe02b8e584314bbb804e46e6d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -212,6 +212,13 @@ return {
                       {
                         "alias": null,
                         "args": null,
+                        "kind": "ScalarField",
+                        "name": "cursor",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
                         "concreteType": "Card",
                         "kind": "LinkedField",
                         "name": "node",
@@ -241,13 +248,6 @@ return {
                           },
                           (v7/*: any*/)
                         ],
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "cursor",
                         "storageKey": null
                       }
                     ],
@@ -287,16 +287,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "88bcf329c9a755a6d10b3ae7a71cecd4",
+    "cacheID": "1761af3d505e1e10b9e80221ed8f73a9",
     "id": null,
     "metadata": {},
     "name": "TodoCardsPaginationFrgament",
     "operationKind": "query",
-    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        title\n        description\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CardFragment\n        id\n        __typename\n      }\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7fa66b887db19dbaaad03becf0652fe2";
+(node as any).hash = "ed286395c175606c4e2741424aa3f50d";
 
 export default node;

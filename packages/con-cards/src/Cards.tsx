@@ -22,7 +22,7 @@ export const Cards = ({ todo, todoId }: TCards) => {
           onClick={(e) => e.stopPropagation()}
         >
           {data.cards.edges?.map((card) => (
-            <Card key={card.node?.id} {...{ card }} __id={data.cards.__id} />
+            <Card key={card.cursor} {...{ card }} __id={data.cards.__id} />
           ))}
           {data.cards.pageInfo?.hasNextPage && (
             <ICLoadMore

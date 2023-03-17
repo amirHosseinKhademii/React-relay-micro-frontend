@@ -4,7 +4,13 @@ import { TCard, useCard } from "./hooks/use-card";
 import { Comments } from "con-comments";
 
 export const Card = ({ card, __id }: TCard) => {
-  const { onDelete, onCompleteToggle, isComments, onCommentsToggle } = useCard({
+  const {
+    onDelete,
+    onCompleteToggle,
+    isComments,
+    onCommentsToggle,
+    cardFragment,
+  } = useCard({
     card,
     __id,
   });
@@ -12,12 +18,11 @@ export const Card = ({ card, __id }: TCard) => {
   return (
     <li
       className={`border border-cyan-500  rounded p-2 cursor-pointer overflow-hidden bg-cyan-200 w-full  ${
-        card.node?.isCompleted ? "bg-cyan-200" : "bg-cyan-100"
+        cardFragment?.isCompleted ? "bg-cyan-200" : "bg-cyan-100"
       }`}
-      key={card.node?.id}
     >
       <div className="flex items-center justify-between">
-        <span> {card.node?.title}</span>
+        <span> {cardFragment?.title}</span>
 
         <div className="flex items-center space-x-2">
           {!isComments && (
@@ -26,7 +31,7 @@ export const Card = ({ card, __id }: TCard) => {
               onClick={onCommentsToggle}
             />
           )}
-          {card.node?.isCompleted ? (
+          {cardFragment?.isCompleted ? (
             <ICUnDone
               className="text-cyan-800 w-5"
               onClick={onCompleteToggle}
@@ -36,7 +41,7 @@ export const Card = ({ card, __id }: TCard) => {
           )}
           <ICTrash
             className="text-red-600 w-5"
-            onClick={() => onDelete(card.node?.id!)}
+            onClick={() => onDelete(cardFragment?.id!)}
           >
             Delete
           </ICTrash>
@@ -44,7 +49,7 @@ export const Card = ({ card, __id }: TCard) => {
       </div>
       {isComments && (
         <Suspense fallback={<div>Loading comments...</div>}>
-          <Comments cardId={card.node?.id!} />
+          <Comments cardId={cardFragment?.id!} />
         </Suspense>
       )}
     </li>

@@ -1,31 +1,36 @@
 import { useId, useState } from "react";
-import { useMutation } from "react-relay";
+import { useFragment, useMutation } from "react-relay";
+import { FragmentRefs } from "relay-runtime";
 import {
   CardDeleteMutation,
   CardUpdateMutation,
 } from "../graphql/Card.mutation";
+import { CardFragment } from "../graphql/Card.fragment";
 import { CardDeleteMutation as TCardDeleteMutation } from "../graphql/__generated__/CardDeleteMutation.graphql";
+import { CardFragment$key } from "../graphql/__generated__/CardFragment.graphql";
 import { CardUpdateMutation as TCardUpdateMutation } from "../graphql/__generated__/CardUpdateMutation.graphql";
 
 export type TCard = {
   __id?: string;
   card: {
+    readonly cursor: string | null;
     readonly node: {
-      readonly id: string;
-      readonly title: string;
-      readonly description: string | null;
-      readonly isCompleted: boolean | null;
+      readonly " $fragmentSpreads": FragmentRefs<"CardFragment">;
     } | null;
   };
 };
 
 export const useCard = ({ __id, card }: TCard) => {
   const [isComments, setIsComments] = useState(false);
+
+  const cardFragment = useFragment<CardFragment$key>(CardFragment, card.node);
+
   const [deleteCard] = useMutation<TCardDeleteMutation>(CardDeleteMutation);
   const [updateCard] = useMutation<TCardUpdateMutation>(CardUpdateMutation);
   const clientMutationId = useId();
 
   return {
+    cardFragment,
     isComments,
     onCommentsToggle: () => setIsComments((prev) => !prev),
     onDelete: (id: string) => {
@@ -49,18 +54,18 @@ export const useCard = ({ __id, card }: TCard) => {
       updateCard({
         variables: {
           input: {
-            id: card.node?.id!,
-            isCompleted: !card.node?.isCompleted,
+            id: cardFragment?.id!,
+            isCompleted: !cardFragment?.isCompleted,
             clientMutationId: clientMutationId,
           },
         },
         optimisticResponse: {
           updateCard: {
             card: {
-              id: card.node?.id!,
-              isCompleted: !card.node?.isCompleted,
-              description: card.node?.description,
-              title: card.node?.title,
+              id: cardFragment?.id!,
+              isCompleted: !cardFragment?.isCompleted,
+              description: cardFragment?.description,
+              title: cardFragment?.title,
             },
             clientMutationId: clientMutationId,
           },

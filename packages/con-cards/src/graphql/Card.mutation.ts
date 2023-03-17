@@ -7,7 +7,7 @@ export const CardAddMutation = graphql`
       addCardEdge {
         cursor
         node @appendNode(connections: $connections, edgeTypeName: "CardEdge") {
-          ...CardsBaseFragment
+          ...CardFragment
         }
       }
     }
@@ -28,7 +28,7 @@ export const CardUpdateMutation = graphql`
     updateCard(input: $input) {
       clientMutationId
       card {
-        ...CardsBaseFragment
+        ...CardFragment
       }
     }
   }
