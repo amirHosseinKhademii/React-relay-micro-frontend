@@ -1,5 +1,5 @@
 import { Modal } from "pcg-commons";
-import { TUseTodosModal, useTodosModal } from "./hooks";
+import { TUseTodosModal, useTodosModal } from "../hooks";
 
 export const TodosModal = ({ onClose }: TUseTodosModal) => {
   const { onSubmit } = useTodosModal({ onClose });

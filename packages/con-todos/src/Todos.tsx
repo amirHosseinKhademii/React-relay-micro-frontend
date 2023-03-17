@@ -1,32 +1,22 @@
 import { ICLoadMore, ICPlus } from "pcg-commons";
 import { Suspense } from "react";
+import { TodosCard, TodosFallBack } from "./components";
 import { useTodos } from "./hooks";
-import { Todo } from "./Todo";
-import { TodosModal } from "./TodosModal";
+import { Todo, TodosModal } from "./containers";
 
 export const Todos = () => {
   const { data, onLoadMore, isPending, onClose, onOpen, isOpen } = useTodos();
 
   return (
     <>
-      <div
-        className="rounded p-4 shadow-md flex flex-col space-y-2 bg-slate-600 antialiased w-full col-span-1  "
-        onClick={(e) => e.stopPropagation()}
-      >
+      <TodosCard>
         <ICPlus
           className=" text-gray-800 w-9 ml-auto cursor-pointer "
           onClick={onOpen}
         />
 
         {data.todos.edges?.map((todo) => (
-          <Suspense
-            key={todo.node?.id}
-            fallback={
-              <div
-                className={`mx-auto w-full border-green-500 bg-green-200 rounded border  p-4 shadow-lg `}
-              />
-            }
-          >
+          <Suspense key={todo.node?.id} fallback={<TodosFallBack />}>
             <Todo
               key={todo.node?.id}
               id={todo.node?.id!}
@@ -41,7 +31,7 @@ export const Todos = () => {
           />
         )}
         {isPending && "Loading more ..."}
-      </div>
+      </TodosCard>
       {isOpen && <TodosModal {...{ onClose }} />}
     </>
   );

@@ -1,6 +1,6 @@
 import { Cards } from "con-cards";
 import { ICDone, ICTrash, ICUnDone } from "pcg-commons";
-import { useTodo } from "./hooks";
+import { useTodo } from "../hooks";
 
 export const Todo = ({ id, __id }: { id: string; __id: string }) => {
   const { todo, onUpdate, onDelete } = useTodo(id, __id);
