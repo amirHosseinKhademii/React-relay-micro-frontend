@@ -12,7 +12,10 @@ export const Card = ({ card, __id, children }: TCard) => {
   return (
     <li className="border border-cyan-500  rounded p-2 cursor-pointer overflow-hidden bg-cyan-200 w-full bg-cyan-100">
       <div className="flex items-center justify-between">
-        <span> {cardFragment?.title}</span>
+        <div className="flex flex-col">
+          <span> {cardFragment?.title}</span>
+          <span className="text-sm"> {cardFragment?.description}</span>
+        </div>
 
         <div className="flex items-center space-x-2">
           {!isComments && (
