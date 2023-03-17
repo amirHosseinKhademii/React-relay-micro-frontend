@@ -10,10 +10,7 @@ import { useRecoilValue } from "recoil";
 import { authAtom } from "pcg-commons";
 import { FragmentRefs } from "relay-runtime";
 import { CommentFragment } from "../graphql/Comment.fragment";
-import {
-  CommentFragment$data,
-  CommentFragment$key,
-} from "../graphql/__generated__/CommentFragment.graphql";
+import { CommentFragment$key } from "../graphql/__generated__/CommentFragment.graphql";
 
 export type TComment = {
   __id?: string;
@@ -58,42 +55,40 @@ export const useComment = ({ __id, comment }: TComment) => {
     isUsers,
     onUsersToggle,
     isLiked,
-    onDelete: (id: string) => {
+    onDelete: () => {
       deleteComment({
         variables: {
           connections: [__id!],
           input: {
-            id,
+            id: commentFragment?.id!,
             clientMutationId,
           },
         },
         optimisticResponse: {
           deleteComment: {
-            id,
+            id: commentFragment?.id!,
             clientMutationId,
           },
         },
       });
     },
-    onLike: (comment: CommentFragment$data) => {
+    onLike: () => {
       const likes = isLiked
         ? commentFragment?.likes?.filter((like) => like !== user!)
         : [...commentFragment?.likes!, user!];
       likeComment({
         variables: {
           input: {
-            id: comment?.id!,
+            id: commentFragment?.id!,
             clientMutationId,
           },
         },
         optimisticResponse: {
           likeComment: {
             comment: {
-              //created_at: comment?.created_at,
-              description: comment?.description,
-              id: comment?.id!,
-              title: comment?.title,
-              // updated_at: comment?.updated_at,
+              description: commentFragment?.description,
+              id: commentFragment?.id!,
+              title: commentFragment?.title,
               likes,
             },
             clientMutationId,

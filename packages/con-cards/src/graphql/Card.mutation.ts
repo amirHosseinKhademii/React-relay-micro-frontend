@@ -28,7 +28,7 @@ export const CardUpdateMutation = graphql`
     updateCard(input: $input) {
       clientMutationId
       card {
-        ...CardFragment
+        ...CardActionFragment
       }
     }
   }

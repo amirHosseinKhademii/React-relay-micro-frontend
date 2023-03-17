@@ -3,24 +3,14 @@ import { Suspense } from "react";
 import { TCard, useCard } from "../hooks";
 import { Comments } from "con-comments";
 
-export const Card = ({ card, __id }: TCard) => {
-  const {
-    onDelete,
-    onCompleteToggle,
-    isComments,
-    onCommentsToggle,
-    cardFragment,
-  } = useCard({
+export const Card = ({ card, __id, children }: TCard) => {
+  const { onDelete, isComments, onCommentsToggle, cardFragment } = useCard({
     card,
     __id,
   });
 
   return (
-    <li
-      className={`border border-cyan-500  rounded p-2 cursor-pointer overflow-hidden bg-cyan-200 w-full  ${
-        cardFragment?.isCompleted ? "bg-cyan-200" : "bg-cyan-100"
-      }`}
-    >
+    <li className="border border-cyan-500  rounded p-2 cursor-pointer overflow-hidden bg-cyan-200 w-full bg-cyan-100">
       <div className="flex items-center justify-between">
         <span> {cardFragment?.title}</span>
 
@@ -31,18 +21,8 @@ export const Card = ({ card, __id }: TCard) => {
               onClick={onCommentsToggle}
             />
           )}
-          {cardFragment?.isCompleted ? (
-            <ICUnDone
-              className="text-cyan-800 w-5"
-              onClick={onCompleteToggle}
-            />
-          ) : (
-            <ICDone className="text-gray-300 w-5" onClick={onCompleteToggle} />
-          )}
-          <ICTrash
-            className="text-red-600 w-5"
-            onClick={() => onDelete(cardFragment?.id!)}
-          >
+          {children}
+          <ICTrash className="text-red-600 w-5" onClick={() => onDelete()}>
             Delete
           </ICTrash>
         </div>

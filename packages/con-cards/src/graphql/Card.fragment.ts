@@ -5,6 +5,12 @@ export const CardFragment = graphql`
     title
     description
     id
+  }
+`;
+
+export const CardActionFragment = graphql`
+  fragment CardActionFragment on Card {
     isCompleted
+    id
   }
 `;

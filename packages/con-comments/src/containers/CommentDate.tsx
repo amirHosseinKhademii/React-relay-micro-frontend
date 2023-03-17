@@ -7,10 +7,10 @@ export const CommentDate = ({ comment }: TCommentDate) => {
   return (
     <>
       <DateText>
-        Created: {commentDateFragment?.created_at.slice(0, 10)}
+        Created: {commentDateFragment?.created_at?.slice(0, 10)}
       </DateText>
       <DateText>
-        Updated:{commentDateFragment?.updated_at.slice(0, 10)}
+        Updated:{commentDateFragment?.updated_at?.slice(0, 10)}
       </DateText>
     </>
   );

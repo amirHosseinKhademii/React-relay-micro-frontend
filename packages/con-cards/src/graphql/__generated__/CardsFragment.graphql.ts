@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<220edc30f27a177a848aa86a97805552>>
+ * @generated SignedSource<<1e993e1e9454745491d643814d2f7569>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,7 +16,7 @@ export type CardsFragment$data = {
     readonly edges: ReadonlyArray<{
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CardFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"CardActionFragment" | "CardFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -167,6 +167,11 @@ return {
                   "name": "CardFragment"
                 },
                 {
+                  "args": null,
+                  "kind": "FragmentSpread",
+                  "name": "CardActionFragment"
+                },
+                {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
@@ -207,6 +212,6 @@ return {
 };
 })();
 
-(node as any).hash = "ed286395c175606c4e2741424aa3f50d";
+(node as any).hash = "29059a69e385dd7b3aa3b3804098fff8";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4946654a675593416397e513bdf0524a>>
+ * @generated SignedSource<<96e0ca8872a0041fde811d3d6df993c1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,7 +23,7 @@ export type CardUpdateMutation$variables = {
 export type CardUpdateMutation$data = {
   readonly updateCard: {
     readonly card: {
-      readonly " $fragmentSpreads": FragmentRefs<"CardFragment">;
+      readonly " $fragmentSpreads": FragmentRefs<"CardActionFragment">;
     };
     readonly clientMutationId: string | null;
   } | null;
@@ -82,7 +82,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "CardFragment"
+                "name": "CardActionFragment"
               }
             ],
             "storageKey": null
@@ -121,14 +121,7 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "title",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "description",
+                "name": "isCompleted",
                 "storageKey": null
               },
               {
@@ -136,13 +129,6 @@ return {
                 "args": null,
                 "kind": "ScalarField",
                 "name": "id",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "isCompleted",
                 "storageKey": null
               }
             ],
@@ -154,16 +140,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "dca8449dec70629150cf649682a98455",
+    "cacheID": "27e597c650e15b3036df54533b9106b4",
     "id": null,
     "metadata": {},
     "name": "CardUpdateMutation",
     "operationKind": "mutation",
-    "text": "mutation CardUpdateMutation(\n  $input: UpdateCardInput!\n) {\n  updateCard(input: $input) {\n    clientMutationId\n    card {\n      ...CardFragment\n      id\n    }\n  }\n}\n\nfragment CardFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n"
+    "text": "mutation CardUpdateMutation(\n  $input: UpdateCardInput!\n) {\n  updateCard(input: $input) {\n    clientMutationId\n    card {\n      ...CardActionFragment\n      id\n    }\n  }\n}\n\nfragment CardActionFragment on Card {\n  isCompleted\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "35c482d8185812333b3706b42e4d0617";
+(node as any).hash = "9ec94057d8746b809fe5fade8cbdbb5b";
 
 export default node;

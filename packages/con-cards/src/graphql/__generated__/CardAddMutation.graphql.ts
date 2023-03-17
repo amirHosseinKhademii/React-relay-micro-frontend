@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<873c7eebf9f759e4a7e2bbd21c4880c1>>
+ * @generated SignedSource<<8d0d3618006a80092060f1eb51c10bb0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -177,13 +177,6 @@ return {
                     "kind": "ScalarField",
                     "name": "id",
                     "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "isCompleted",
-                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -218,12 +211,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7c398190b1278e8cc357b24a6075eecf",
+    "cacheID": "5b166b97d2f12a0053f6e564a301217b",
     "id": null,
     "metadata": {},
     "name": "CardAddMutation",
     "operationKind": "mutation",
-    "text": "mutation CardAddMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n"
+    "text": "mutation CardAddMutation(\n  $input: AddCardInput!\n) {\n  addCard(input: $input) {\n    clientMutationId\n    addCardEdge {\n      cursor\n      node {\n        ...CardFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CardFragment on Card {\n  title\n  description\n  id\n}\n"
   }
 };
 })();

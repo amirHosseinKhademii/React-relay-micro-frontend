@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7dbdc3a1a0b3d4884a50da200464dbf1>>
+ * @generated SignedSource<<6f9442553355e091f9b76048b426cf30>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,7 +25,7 @@ export type CommentAddMutation$data = {
     readonly addCommentEdge: {
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CommentFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"CommentDateFragment" | "CommentFragment">;
       } | null;
     };
     readonly clientMutationId: string | null;
@@ -108,6 +108,11 @@ return {
                     "args": null,
                     "kind": "FragmentSpread",
                     "name": "CommentFragment"
+                  },
+                  {
+                    "args": null,
+                    "kind": "FragmentSpread",
+                    "name": "CommentDateFragment"
                   }
                 ],
                 "storageKey": null
@@ -184,6 +189,20 @@ return {
                     "kind": "ScalarField",
                     "name": "likes",
                     "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "created_at",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "updated_at",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -218,16 +237,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "55b0059a938ffab064c30ca810bbd85a",
+    "cacheID": "3bd3d07e2b6cc8c4030bcbc740668e8a",
     "id": null,
     "metadata": {},
     "name": "CommentAddMutation",
     "operationKind": "mutation",
-    "text": "mutation CommentAddMutation(\n  $input: AddCommentInput!\n) {\n  addComment(input: $input) {\n    clientMutationId\n    addCommentEdge {\n      cursor\n      node {\n        ...CommentFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n"
+    "text": "mutation CommentAddMutation(\n  $input: AddCommentInput!\n) {\n  addComment(input: $input) {\n    clientMutationId\n    addCommentEdge {\n      cursor\n      node {\n        ...CommentFragment\n        ...CommentDateFragment\n        id\n      }\n    }\n  }\n}\n\nfragment CommentDateFragment on Comment {\n  created_at\n  updated_at\n}\n\nfragment CommentFragment on Comment {\n  id\n  title\n  description\n  likes\n}\n"
   }
 };
 })();
 
-(node as any).hash = "882546b6f6c9c341caf8fbf0d500c558";
+(node as any).hash = "884a1993e19fb0b7c6cf0210b9004267";
 
 export default node;

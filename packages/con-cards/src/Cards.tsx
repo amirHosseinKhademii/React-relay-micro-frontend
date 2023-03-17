@@ -1,6 +1,6 @@
 import { ICLoadMore } from "pcg-commons";
-import { CardsCard } from "./components";
-import { Card, CardsModal } from "./containers";
+import { CardsWrapper } from "./components";
+import { Card, CardAction, CardsModal } from "./containers";
 import { TCards, useCards } from "./hooks";
 
 export const Cards = ({ todo, todoId }: TCards) => {
@@ -11,9 +11,11 @@ export const Cards = ({ todo, todoId }: TCards) => {
 
   return (
     <>
-      <CardsCard {...{ onOpen }}>
+      <CardsWrapper {...{ onOpen }}>
         {data.cards.edges?.map((card) => (
-          <Card key={card.cursor} {...{ card }} __id={data.cards.__id} />
+          <Card key={card.cursor} {...{ card }} __id={data.cards.__id}>
+            <CardAction {...{ card }} />
+          </Card>
         ))}
         {data.cards.pageInfo?.hasNextPage && (
           <ICLoadMore
@@ -22,7 +24,7 @@ export const Cards = ({ todo, todoId }: TCards) => {
           />
         )}
         {isPending && "Loading more ..."}
-      </CardsCard>
+      </CardsWrapper>
       {isOpen && <CardsModal {...{ onClose, todoId }} __id={data.cards.__id} />}
     </>
   );

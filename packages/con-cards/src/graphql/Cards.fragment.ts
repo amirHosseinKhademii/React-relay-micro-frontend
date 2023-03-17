@@ -19,6 +19,7 @@ export const CardsFragment = graphql`
         cursor
         node {
           ...CardFragment
+          ...CardActionFragment
         }
       }
     }

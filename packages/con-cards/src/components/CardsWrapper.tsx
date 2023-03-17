@@ -1,7 +1,7 @@
 import { ICPlus } from "pcg-commons";
 import { ReactNode } from "react";
 
-export const CardsCard = ({
+export const CardsWrapper = ({
   onOpen,
   children,
 }: {

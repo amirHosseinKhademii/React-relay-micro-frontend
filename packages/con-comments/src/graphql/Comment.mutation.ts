@@ -9,6 +9,7 @@ export const CommentAddMutation = graphql`
         node
           @appendNode(connections: $connections, edgeTypeName: "CommentEdge") {
           ...CommentFragment
+          ...CommentDateFragment
         }
       }
     }
@@ -33,6 +34,7 @@ export const CommentLikeMutation = graphql`
       clientMutationId
       comment {
         ...CommentFragment
+        ...CommentDateFragment
       }
     }
   }
