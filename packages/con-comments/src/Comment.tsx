@@ -26,12 +26,12 @@ export const Comment = ({ comment, __id }: TComment) => {
             {isLiked ? (
               <ICHeartFill
                 className="text-red-500 w-5"
-                onClick={() => onLike()}
+                onClick={() => onLike(commentFragment!)}
               />
             ) : (
               <ICHeartOutline
                 className="text-red-500 w-5"
-                onClick={() => onLike()}
+                onClick={() => onLike(commentFragment!)}
               />
             )}
           </div>

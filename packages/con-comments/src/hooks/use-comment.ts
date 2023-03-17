@@ -10,7 +10,10 @@ import { useRecoilValue } from "recoil";
 import { authAtom } from "pcg-commons";
 import { FragmentRefs } from "relay-runtime";
 import { CommentFragment } from "../graphql/Comment.fragments";
-import { CommentFragment$key } from "../graphql/__generated__/CommentFragment.graphql";
+import {
+  CommentFragment$data,
+  CommentFragment$key,
+} from "../graphql/__generated__/CommentFragment.graphql";
 
 export type TComment = {
   __id?: string;
@@ -45,10 +48,13 @@ export const useComment = ({ __id, comment }: TComment) => {
     setIsUsersOpen((prev) => !prev);
   };
 
+  const isLiked = commentFragment?.likes?.includes(user!);
+
   return {
     commentFragment,
     isUsers,
     onUsersToggle,
+    isLiked,
     onDelete: (id: string) => {
       deleteComment({
         variables: {
@@ -66,29 +72,31 @@ export const useComment = ({ __id, comment }: TComment) => {
         },
       });
     },
-    onLike: () => {
+    onLike: (comment: CommentFragment$data) => {
+      const likes = isLiked
+        ? commentFragment?.likes?.filter((like) => like !== user!)
+        : [...commentFragment?.likes!, user!];
       likeComment({
         variables: {
           input: {
-            id: commentFragment?.id!,
+            id: comment?.id!,
             clientMutationId,
           },
         },
         optimisticResponse: {
           likeComment: {
             comment: {
-              created_at: commentFragment?.created_at,
-              description: commentFragment?.description,
-              id: commentFragment?.id!,
-              title: commentFragment?.title,
-              updated_at: commentFragment?.updated_at,
-              likes: [...commentFragment?.likes!, "1"],
+              created_at: comment?.created_at,
+              description: comment?.description,
+              id: comment?.id!,
+              title: comment?.title,
+              updated_at: comment?.updated_at,
+              likes,
             },
             clientMutationId,
           },
         },
       });
     },
-    isLiked: commentFragment?.likes?.includes(user!),
   };
 };

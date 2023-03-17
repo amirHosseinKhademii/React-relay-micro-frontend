@@ -8,7 +8,7 @@ export const CommentAddMutation = graphql`
         cursor
         node
           @appendNode(connections: $connections, edgeTypeName: "CommentEdge") {
-          ...CommentBaseFragment
+          ...CommentFragment
         }
       }
     }
@@ -32,7 +32,7 @@ export const CommentLikeMutation = graphql`
     likeComment(input: $input) {
       clientMutationId
       comment {
-        ...CommentBaseFragment
+        ...CommentFragment
       }
     }
   }
