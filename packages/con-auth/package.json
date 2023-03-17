@@ -21,7 +21,7 @@
   },
   "relay": {
     "src": "./src/",
-    "schema": "../../schema.graphql",
+    "schema": "../../apps/api/src/schema.gql",
     "language": "typescript",
     "eagerEsModules": true,
     "exclude": [
