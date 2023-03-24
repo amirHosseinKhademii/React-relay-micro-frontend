@@ -10,27 +10,9 @@ export const CardsStitchFragment = graphql`
         hasNextPage
       }
       edges {
-        node {
-          ...CardsStitchBaseFragment
-        }
-      }
-    }
-  }
-`;
-
-export const CardsStitchCommentsFragment = graphql`
-  fragment CardsStitchCommentsFragment on Card
-  @refetchable(queryName: "CardsStitchCommentsPaginationFrgament") {
-    comments(before: $before, after: $after, first: $first, last: $last)
-      @connection(key: "List__comments") {
-      __id
-      pageInfo {
-        hasNextPage
-      }
-      edges {
         cursor
         node {
-          ...CardsStitchCommentBaseFragment
+          ...CardsStitchBaseFragment
         }
       }
     }
@@ -43,17 +25,6 @@ export const CardsStitchBaseFragment = graphql`
     description
     id
     isCompleted
-    ...CardsStitchCommentsFragment
-  }
-`;
-
-export const CardsStitchCommentBaseFragment = graphql`
-  fragment CardsStitchCommentBaseFragment on Comment {
-    id
-    title
-    description
-    created_at
-    updated_at
-    likes
+    ...CommentsStitchFragment
   }
 `;

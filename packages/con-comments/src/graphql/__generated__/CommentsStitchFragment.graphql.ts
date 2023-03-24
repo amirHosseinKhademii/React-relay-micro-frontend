@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ecda2049d4aca145f6e8755ef3b3a638>>
+ * @generated SignedSource<<03cb838829480c89f578358e6a4fd9b7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,13 +10,13 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type CardsStitchFragment$data = {
-  readonly cards: {
+export type CommentsStitchFragment$data = {
+  readonly comments: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly cursor: string | null;
       readonly node: {
-        readonly " $fragmentSpreads": FragmentRefs<"CardsStitchBaseFragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"CommentsStitchBaseFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -24,18 +24,18 @@ export type CardsStitchFragment$data = {
     } | null;
   };
   readonly id: string;
-  readonly " $fragmentType": "CardsStitchFragment";
+  readonly " $fragmentType": "CommentsStitchFragment";
 };
-export type CardsStitchFragment$key = {
-  readonly " $data"?: CardsStitchFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"CardsStitchFragment">;
+export type CommentsStitchFragment$key = {
+  readonly " $data"?: CommentsStitchFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentsStitchFragment">;
 };
 
-import CardsStitchCardsPaginationFrgament_graphql from './CardsStitchCardsPaginationFrgament.graphql';
+import CommentsStitchPaginationFrgament_graphql from './CommentsStitchPaginationFrgament.graphql';
 
 const node: ReaderFragment = (function(){
 var v0 = [
-  "cards"
+  "comments"
 ];
 return {
   "argumentDefinitions": [
@@ -81,24 +81,24 @@ return {
       "fragmentPathInResult": [
         "node"
       ],
-      "operation": CardsStitchCardsPaginationFrgament_graphql,
+      "operation": CommentsStitchPaginationFrgament_graphql,
       "identifierField": "id"
     }
   },
-  "name": "CardsStitchFragment",
+  "name": "CommentsStitchFragment",
   "selections": [
     {
-      "alias": "cards",
+      "alias": "comments",
       "args": null,
-      "concreteType": "CardConnection",
+      "concreteType": "CommentConnection",
       "kind": "LinkedField",
-      "name": "__List__cards_connection",
+      "name": "__List__comments_connection",
       "plural": false,
       "selections": [
         {
           "alias": null,
           "args": null,
-          "concreteType": "CardPageInfo",
+          "concreteType": "CommentPageInfo",
           "kind": "LinkedField",
           "name": "pageInfo",
           "plural": false,
@@ -137,7 +137,7 @@ return {
         {
           "alias": null,
           "args": null,
-          "concreteType": "CardEdge",
+          "concreteType": "CommentEdge",
           "kind": "LinkedField",
           "name": "edges",
           "plural": true,
@@ -152,7 +152,7 @@ return {
             {
               "alias": null,
               "args": null,
-              "concreteType": "Card",
+              "concreteType": "Comment",
               "kind": "LinkedField",
               "name": "node",
               "plural": false,
@@ -160,7 +160,7 @@ return {
                 {
                   "args": null,
                   "kind": "FragmentSpread",
-                  "name": "CardsStitchBaseFragment"
+                  "name": "CommentsStitchBaseFragment"
                 },
                 {
                   "alias": null,
@@ -198,11 +198,11 @@ return {
       "storageKey": null
     }
   ],
-  "type": "Todo",
+  "type": "Card",
   "abstractKey": null
 };
 })();
 
-(node as any).hash = "973dbcd8cffb201e435a3bb03f2249e8";
+(node as any).hash = "a2e49269b93f892d9ba75258deceef94";
 
 export default node;

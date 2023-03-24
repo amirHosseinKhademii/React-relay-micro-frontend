@@ -24,8 +24,8 @@ export const TodosStitch = () => {
 
   return (
     <div className="bg-white p-10">
-      {stitchData.todos.edges?.map((todo, key) => (
-        <TodoStitch {...{ todo }} key={key} />
+      {stitchData.todos.edges?.map((todo) => (
+        <TodoStitch {...{ todo }} key={todo.cursor} />
       ))}
       {stitchData?.todos.pageInfo?.hasNextPage && (
         <ICLoadMore

@@ -21,6 +21,7 @@ export const TodosStitchFragment = graphql`
         hasNextPage
       }
       edges {
+        cursor
         node {
           ...TodosStitchTodoBaseFragment
         }

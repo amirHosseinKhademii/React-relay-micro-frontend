@@ -1,3 +1,4 @@
+import { CommentsStitch } from "con-comments";
 import { ICLoadMore } from "pcg-commons";
 import { CardsWrapper } from "./components";
 
@@ -16,6 +17,7 @@ const CardStitch = <T extends TCardNodeBase>(props: TCardStitch<T>) => {
     <div className="bg-green-300 m-2 p-2">
       <div>{card?.title}</div>
       <div>{card?.description}</div>
+      <CommentsStitch {...{ card }} />
     </div>
   );
 };
@@ -28,8 +30,8 @@ export const CardsStitch = ({ todo }: TCardsStitch) => {
   return (
     <>
       <CardsWrapper {...{ onOpen }}>
-        {data?.cards.edges?.map((card, index) => (
-          <CardStitch {...{ card }} key={index} />
+        {data?.cards.edges?.map((card) => (
+          <CardStitch {...{ card }} key={card.cursor} />
         ))}
         {data?.cards.pageInfo?.hasNextPage && (
           <ICLoadMore

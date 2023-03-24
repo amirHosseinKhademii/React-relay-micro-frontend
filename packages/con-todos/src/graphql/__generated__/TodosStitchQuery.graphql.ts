@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f9221b2b5052c8db78a410b4ec25b5a8>>
+ * @generated SignedSource<<eee5614c8db6bdbaf0e4e5c9d052dfae>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -101,35 +101,35 @@ v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "id",
+  "name": "cursor",
   "storageKey": null
 },
 v7 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "title",
+  "name": "id",
   "storageKey": null
 },
 v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "description",
+  "name": "title",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "isCompleted",
+  "name": "description",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "cursor",
+  "name": "isCompleted",
   "storageKey": null
 },
 v11 = {
@@ -209,6 +209,7 @@ return {
             "name": "edges",
             "plural": true,
             "selections": [
+              (v6/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -217,10 +218,10 @@ return {
                 "name": "node",
                 "plural": false,
                 "selections": [
-                  (v6/*: any*/),
                   (v7/*: any*/),
                   (v8/*: any*/),
                   (v9/*: any*/),
+                  (v10/*: any*/),
                   {
                     "alias": null,
                     "args": (v4/*: any*/),
@@ -247,6 +248,7 @@ return {
                         "name": "edges",
                         "plural": true,
                         "selections": [
+                          (v6/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -255,10 +257,10 @@ return {
                             "name": "node",
                             "plural": false,
                             "selections": [
-                              (v7/*: any*/),
                               (v8/*: any*/),
-                              (v6/*: any*/),
                               (v9/*: any*/),
+                              (v7/*: any*/),
+                              (v10/*: any*/),
                               {
                                 "alias": null,
                                 "args": (v4/*: any*/),
@@ -285,7 +287,7 @@ return {
                                     "name": "edges",
                                     "plural": true,
                                     "selections": [
-                                      (v10/*: any*/),
+                                      (v6/*: any*/),
                                       {
                                         "alias": null,
                                         "args": null,
@@ -294,9 +296,9 @@ return {
                                         "name": "node",
                                         "plural": false,
                                         "selections": [
-                                          (v6/*: any*/),
                                           (v7/*: any*/),
                                           (v8/*: any*/),
+                                          (v9/*: any*/),
                                           {
                                             "alias": null,
                                             "args": null,
@@ -341,8 +343,7 @@ return {
                               (v11/*: any*/)
                             ],
                             "storageKey": null
-                          },
-                          (v10/*: any*/)
+                          }
                         ],
                         "storageKey": null
                       },
@@ -362,8 +363,7 @@ return {
                   (v11/*: any*/)
                 ],
                 "storageKey": null
-              },
-              (v10/*: any*/)
+              }
             ],
             "storageKey": null
           },
@@ -383,12 +383,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0ca3a8d41ff6f8159ee5db04881efc90",
+    "cacheID": "e22027130746ffabfe503896f3cbfd31",
     "id": null,
     "metadata": {},
     "name": "TodosStitchQuery",
     "operationKind": "query",
-    "text": "query TodosStitchQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...TodosStitchFragment\n}\n\nfragment CardsStitchBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n}\n\nfragment CardsStitchCommentBaseFragment on Comment {\n  id\n  title\n  description\n  created_at\n  updated_at\n  likes\n}\n\nfragment CardsStitchCommentsFragment on Card {\n  comments(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CardsStitchCommentBaseFragment\n        id\n        __typename\n      }\n    }\n  }\n  id\n}\n\nfragment CardsStitchFragment on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        ...CardsStitchBaseFragment\n        ...CardsStitchCommentsFragment\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n\nfragment TodosStitchFragment on Query {\n  todos(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        ...TodosStitchTodoBaseFragment\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment TodosStitchTodoBaseFragment on Todo {\n  id\n  title\n  description\n  isCompleted\n  ...CardsStitchFragment\n}\n"
+    "text": "query TodosStitchQuery(\n  $before: String\n  $after: String\n  $first: Float\n  $last: Float\n) {\n  ...TodosStitchFragment\n}\n\nfragment CardsStitchBaseFragment on Card {\n  title\n  description\n  id\n  isCompleted\n  ...CommentsStitchFragment\n}\n\nfragment CardsStitchFragment on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CardsStitchBaseFragment\n        id\n        __typename\n      }\n    }\n  }\n  id\n}\n\nfragment CommentsStitchBaseFragment on Comment {\n  id\n  title\n  description\n  created_at\n  updated_at\n  likes\n}\n\nfragment CommentsStitchFragment on Card {\n  comments(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CommentsStitchBaseFragment\n        id\n        __typename\n      }\n    }\n  }\n  id\n}\n\nfragment TodosStitchFragment on Query {\n  todos(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...TodosStitchTodoBaseFragment\n        id\n        __typename\n      }\n    }\n  }\n}\n\nfragment TodosStitchTodoBaseFragment on Todo {\n  id\n  title\n  description\n  isCompleted\n  ...CardsStitchFragment\n}\n"
   }
 };
 })();

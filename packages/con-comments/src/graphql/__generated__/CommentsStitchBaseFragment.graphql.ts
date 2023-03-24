@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bf9a49991a47b6c8b43c160f0b3456f4>>
+ * @generated SignedSource<<f01363ca8867b23992e83ccffd7bb38f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,25 +10,33 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type CardsStitchBaseFragment$data = {
+export type CommentsStitchBaseFragment$data = {
+  readonly created_at: any | null;
   readonly description: string | null;
   readonly id: string;
-  readonly isCompleted: boolean | null;
+  readonly likes: ReadonlyArray<string>;
   readonly title: string;
-  readonly " $fragmentSpreads": FragmentRefs<"CommentsStitchFragment">;
-  readonly " $fragmentType": "CardsStitchBaseFragment";
+  readonly updated_at: any | null;
+  readonly " $fragmentType": "CommentsStitchBaseFragment";
 };
-export type CardsStitchBaseFragment$key = {
-  readonly " $data"?: CardsStitchBaseFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"CardsStitchBaseFragment">;
+export type CommentsStitchBaseFragment$key = {
+  readonly " $data"?: CommentsStitchBaseFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CommentsStitchBaseFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "CardsStitchBaseFragment",
+  "name": "CommentsStitchBaseFragment",
   "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    },
     {
       "alias": null,
       "args": null,
@@ -47,26 +55,28 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "id",
+      "name": "created_at",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "isCompleted",
+      "name": "updated_at",
       "storageKey": null
     },
     {
+      "alias": null,
       "args": null,
-      "kind": "FragmentSpread",
-      "name": "CommentsStitchFragment"
+      "kind": "ScalarField",
+      "name": "likes",
+      "storageKey": null
     }
   ],
-  "type": "Card",
+  "type": "Comment",
   "abstractKey": null
 };
 
-(node as any).hash = "349ad9d6e50d9817d0648939b8fb366d";
+(node as any).hash = "53fd9246cb63fea734bfac14cecba499";
 
 export default node;

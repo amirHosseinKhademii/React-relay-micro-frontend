@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c46b4174a9178dbf6f32020a46ef8a3a>>
+ * @generated SignedSource<<362ed116e22ed96d80eb74f2f6cf3b9d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type TodosStitchFragment$data = {
   readonly todos: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
+      readonly cursor: string | null;
       readonly node: {
         readonly " $fragmentSpreads": FragmentRefs<"TodosStitchTodoBaseFragment">;
       } | null;
@@ -140,6 +141,13 @@ return {
             {
               "alias": null,
               "args": null,
+              "kind": "ScalarField",
+              "name": "cursor",
+              "storageKey": null
+            },
+            {
+              "alias": null,
+              "args": null,
               "concreteType": "Todo",
               "kind": "LinkedField",
               "name": "node",
@@ -158,13 +166,6 @@ return {
                   "storageKey": null
                 }
               ],
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "cursor",
               "storageKey": null
             }
           ],
@@ -191,6 +192,6 @@ return {
 };
 })();
 
-(node as any).hash = "4686071867ade1be59b2a1d0fb1fb21f";
+(node as any).hash = "a0617d352250037095edb9b8c4536d93";
 
 export default node;
