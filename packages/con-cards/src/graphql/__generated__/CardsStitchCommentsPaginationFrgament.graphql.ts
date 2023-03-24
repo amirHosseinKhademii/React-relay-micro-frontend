@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6986111d50f64d3dfcaa53ce126dd8d4>>
+ * @generated SignedSource<<e10c6d8288442f9588c23e722df54ed5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,21 +10,21 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TodoCardsPaginationFrgament$variables = {
+export type CardsStitchCommentsPaginationFrgament$variables = {
   after?: string | null;
   before?: string | null;
   first?: number | null;
   id: string;
   last?: number | null;
 };
-export type TodoCardsPaginationFrgament$data = {
+export type CardsStitchCommentsPaginationFrgament$data = {
   readonly node: {
-    readonly " $fragmentSpreads": FragmentRefs<"CardsFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"CardsStitchCommentsFragment">;
   } | null;
 };
-export type TodoCardsPaginationFrgament = {
-  response: TodoCardsPaginationFrgament$data;
-  variables: TodoCardsPaginationFrgament$variables;
+export type CardsStitchCommentsPaginationFrgament = {
+  response: CardsStitchCommentsPaginationFrgament$data;
+  variables: CardsStitchCommentsPaginationFrgament$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -39,7 +39,7 @@ v1 = {
   "name": "before"
 },
 v2 = {
-  "defaultValue": 2,
+  "defaultValue": null,
   "kind": "LocalArgument",
   "name": "first"
 },
@@ -60,7 +60,21 @@ v5 = [
     "variableName": "id"
   }
 ],
-v6 = [
+v6 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "__typename",
+  "storageKey": null
+},
+v7 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v8 = [
   {
     "kind": "Variable",
     "name": "after",
@@ -81,21 +95,7 @@ v6 = [
     "name": "last",
     "variableName": "last"
   }
-],
-v7 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "__typename",
-  "storageKey": null
-},
-v8 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": [
@@ -107,7 +107,7 @@ return {
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "TodoCardsPaginationFrgament",
+    "name": "CardsStitchCommentsPaginationFrgament",
     "selections": [
       {
         "alias": null,
@@ -118,9 +118,9 @@ return {
         "plural": false,
         "selections": [
           {
-            "args": (v6/*: any*/),
+            "args": null,
             "kind": "FragmentSpread",
-            "name": "CardsFragment"
+            "name": "CardsStitchCommentsFragment"
           }
         ],
         "storageKey": null
@@ -139,7 +139,7 @@ return {
       (v3/*: any*/)
     ],
     "kind": "Operation",
-    "name": "TodoCardsPaginationFrgament",
+    "name": "CardsStitchCommentsPaginationFrgament",
     "selections": [
       {
         "alias": null,
@@ -149,23 +149,23 @@ return {
         "name": "node",
         "plural": false,
         "selections": [
+          (v6/*: any*/),
           (v7/*: any*/),
-          (v8/*: any*/),
           {
             "kind": "InlineFragment",
             "selections": [
               {
                 "alias": null,
-                "args": (v6/*: any*/),
-                "concreteType": "CardConnection",
+                "args": (v8/*: any*/),
+                "concreteType": "CommentConnection",
                 "kind": "LinkedField",
-                "name": "cards",
+                "name": "comments",
                 "plural": false,
                 "selections": [
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "CardPageInfo",
+                    "concreteType": "CommentPageInfo",
                     "kind": "LinkedField",
                     "name": "pageInfo",
                     "plural": false,
@@ -204,7 +204,7 @@ return {
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "CardEdge",
+                    "concreteType": "CommentEdge",
                     "kind": "LinkedField",
                     "name": "edges",
                     "plural": true,
@@ -212,11 +212,19 @@ return {
                       {
                         "alias": null,
                         "args": null,
-                        "concreteType": "Card",
+                        "kind": "ScalarField",
+                        "name": "cursor",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "Comment",
                         "kind": "LinkedField",
                         "name": "node",
                         "plural": false,
                         "selections": [
+                          (v7/*: any*/),
                           {
                             "alias": null,
                             "args": null,
@@ -231,23 +239,29 @@ return {
                             "name": "description",
                             "storageKey": null
                           },
-                          (v8/*: any*/),
                           {
                             "alias": null,
                             "args": null,
                             "kind": "ScalarField",
-                            "name": "isCompleted",
+                            "name": "created_at",
                             "storageKey": null
                           },
-                          (v7/*: any*/)
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "updated_at",
+                            "storageKey": null
+                          },
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "likes",
+                            "storageKey": null
+                          },
+                          (v6/*: any*/)
                         ],
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "cursor",
                         "storageKey": null
                       }
                     ],
@@ -270,15 +284,15 @@ return {
               },
               {
                 "alias": null,
-                "args": (v6/*: any*/),
+                "args": (v8/*: any*/),
                 "filters": null,
                 "handle": "connection",
-                "key": "List__cards",
+                "key": "List__comments",
                 "kind": "LinkedHandle",
-                "name": "cards"
+                "name": "comments"
               }
             ],
-            "type": "Todo",
+            "type": "Card",
             "abstractKey": null
           }
         ],
@@ -287,16 +301,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "88bcf329c9a755a6d10b3ae7a71cecd4",
+    "cacheID": "6edf44b4914299ec91c5ea5f69192686",
     "id": null,
     "metadata": {},
-    "name": "TodoCardsPaginationFrgament",
+    "name": "CardsStitchCommentsPaginationFrgament",
     "operationKind": "query",
-    "text": "query TodoCardsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float = 2\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsFragment_pbnwq\n    id\n  }\n}\n\nfragment CardsFragment_pbnwq on Todo {\n  cards(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        title\n        description\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query CardsStitchCommentsPaginationFrgament(\n  $after: String\n  $before: String\n  $first: Float\n  $last: Float\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...CardsStitchCommentsFragment\n    id\n  }\n}\n\nfragment CardsStitchCommentBaseFragment on Comment {\n  id\n  title\n  description\n  created_at\n  updated_at\n  likes\n}\n\nfragment CardsStitchCommentsFragment on Card {\n  comments(before: $before, after: $after, first: $first, last: $last) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CardsStitchCommentBaseFragment\n        id\n        __typename\n      }\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "7fa66b887db19dbaaad03becf0652fe2";
+(node as any).hash = "8d146e23f9849aafded4a90a273bf208";
 
 export default node;

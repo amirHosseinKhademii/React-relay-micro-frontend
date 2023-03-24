@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b0ad7d3a2fa4d1e8628455fd940b4565>>
+ * @generated SignedSource<<741cb01f860bb900e781a76fc6e1c597>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,24 +10,33 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type CardsBaseFragment$data = {
+export type CardsStitchCommentBaseFragment$data = {
+  readonly created_at: any | null;
   readonly description: string | null;
   readonly id: string;
-  readonly isCompleted: boolean | null;
+  readonly likes: ReadonlyArray<string>;
   readonly title: string;
-  readonly " $fragmentType": "CardsBaseFragment";
+  readonly updated_at: any | null;
+  readonly " $fragmentType": "CardsStitchCommentBaseFragment";
 };
-export type CardsBaseFragment$key = {
-  readonly " $data"?: CardsBaseFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"CardsBaseFragment">;
+export type CardsStitchCommentBaseFragment$key = {
+  readonly " $data"?: CardsStitchCommentBaseFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CardsStitchCommentBaseFragment">;
 };
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "CardsBaseFragment",
+  "name": "CardsStitchCommentBaseFragment",
   "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    },
     {
       "alias": null,
       "args": null,
@@ -46,21 +55,28 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "id",
+      "name": "created_at",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "isCompleted",
+      "name": "updated_at",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "likes",
       "storageKey": null
     }
   ],
-  "type": "Card",
+  "type": "Comment",
   "abstractKey": null
 };
 
-(node as any).hash = "824334f151e88ad54a90a61e5b7b3821";
+(node as any).hash = "49ec46f6db28a1a9e0a78fc823082427";
 
 export default node;

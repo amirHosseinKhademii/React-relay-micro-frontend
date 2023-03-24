@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bd1f1a28a3df17c4cf865663f952d932>>
+ * @generated SignedSource<<eb264f4b7249e58a9ad974f9445077fb>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,15 +10,12 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type CardsFragment$data = {
+export type CardsStitchFragment$data = {
   readonly cards: {
     readonly __id: string;
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly description: string | null;
-        readonly id: string;
-        readonly isCompleted: boolean | null;
-        readonly title: string;
+        readonly " $fragmentSpreads": FragmentRefs<"CardsStitchBaseFragment">;
       } | null;
     }> | null;
     readonly pageInfo: {
@@ -26,46 +23,35 @@ export type CardsFragment$data = {
     } | null;
   };
   readonly id: string;
-  readonly " $fragmentType": "CardsFragment";
+  readonly " $fragmentType": "CardsStitchFragment";
 };
-export type CardsFragment$key = {
-  readonly " $data"?: CardsFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"CardsFragment">;
+export type CardsStitchFragment$key = {
+  readonly " $data"?: CardsStitchFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"CardsStitchFragment">;
 };
 
-import TodoCardsPaginationFrgament_graphql from './TodoCardsPaginationFrgament.graphql';
+import CardsStitchCardsPaginationFrgament_graphql from './CardsStitchCardsPaginationFrgament.graphql';
 
 const node: ReaderFragment = (function(){
 var v0 = [
   "cards"
-],
-v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-};
+];
 return {
   "argumentDefinitions": [
     {
-      "defaultValue": null,
-      "kind": "LocalArgument",
+      "kind": "RootArgument",
       "name": "after"
     },
     {
-      "defaultValue": null,
-      "kind": "LocalArgument",
+      "kind": "RootArgument",
       "name": "before"
     },
     {
-      "defaultValue": 2,
-      "kind": "LocalArgument",
+      "kind": "RootArgument",
       "name": "first"
     },
     {
-      "defaultValue": null,
-      "kind": "LocalArgument",
+      "kind": "RootArgument",
       "name": "last"
     }
   ],
@@ -94,11 +80,11 @@ return {
       "fragmentPathInResult": [
         "node"
       ],
-      "operation": TodoCardsPaginationFrgament_graphql,
+      "operation": CardsStitchCardsPaginationFrgament_graphql,
       "identifierField": "id"
     }
   },
-  "name": "CardsFragment",
+  "name": "CardsStitchFragment",
   "selections": [
     {
       "alias": "cards",
@@ -164,26 +150,9 @@ return {
               "plural": false,
               "selections": [
                 {
-                  "alias": null,
                   "args": null,
-                  "kind": "ScalarField",
-                  "name": "title",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "description",
-                  "storageKey": null
-                },
-                (v1/*: any*/),
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "isCompleted",
-                  "storageKey": null
+                  "kind": "FragmentSpread",
+                  "name": "CardsStitchBaseFragment"
                 },
                 {
                   "alias": null,
@@ -220,13 +189,19 @@ return {
       ],
       "storageKey": null
     },
-    (v1/*: any*/)
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    }
   ],
   "type": "Todo",
   "abstractKey": null
 };
 })();
 
-(node as any).hash = "7fa66b887db19dbaaad03becf0652fe2";
+(node as any).hash = "5fa5132fca7c78259c3cdbace295bb51";
 
 export default node;

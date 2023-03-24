@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1d9b0368a2922fb76d20cdd911db4572>>
+ * @generated SignedSource<<9e1309a3d80cfe181b364502b95d45c3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -202,6 +202,13 @@ return {
                       {
                         "alias": null,
                         "args": null,
+                        "kind": "ScalarField",
+                        "name": "cursor",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
                         "concreteType": "Card",
                         "kind": "LinkedField",
                         "name": "node",
@@ -213,13 +220,6 @@ return {
                           (v5/*: any*/),
                           (v6/*: any*/)
                         ],
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "cursor",
                         "storageKey": null
                       }
                     ],
@@ -259,12 +259,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "b83b0ff1f01a7948d7007648679141a8",
+    "cacheID": "3ea13526d4cdd03563d8f881701900c3",
     "id": null,
     "metadata": {},
     "name": "TodoQuery",
     "operationKind": "query",
-    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      node {\n        title\n        description\n        id\n        isCompleted\n        __typename\n      }\n      cursor\n    }\n  }\n  id\n}\n"
+    "text": "query TodoQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Todo {\n      id\n      title\n      description\n      isCompleted\n      ...CardsFragment\n    }\n    id\n  }\n}\n\nfragment CardActionFragment on Card {\n  isCompleted\n  id\n}\n\nfragment CardFragment on Card {\n  title\n  description\n  id\n}\n\nfragment CardsFragment on Todo {\n  cards(first: 2) {\n    pageInfo {\n      hasNextPage\n      endCursor\n      hasPreviousPage\n      startCursor\n    }\n    edges {\n      cursor\n      node {\n        ...CardFragment\n        ...CardActionFragment\n        id\n        __typename\n      }\n    }\n  }\n  id\n}\n"
   }
 };
 })();

@@ -21,7 +21,7 @@
     "react-relay": "14.0.0"
   },
   "relay": {
-    "src": "./src/",
+    "src": "..",
     "schema": "../../apps/api/src/schema.gql",
     "language": "typescript",
     "eagerEsModules": true,
