@@ -10,9 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - script: "echo $(System.DefaultWorkingDirectory)"
-    displayName: "echo"
-
   - script: "yarn"
     displayName: "install"
 
