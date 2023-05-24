@@ -13,6 +13,9 @@ steps:
   - script: "yarn"
     displayName: "install"
 
+  - script: "yarn test"
+    displayName: "test frontend"
+
   - script: "yarn build"
     displayName: "build frontend"
 
