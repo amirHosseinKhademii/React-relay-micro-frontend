@@ -10,16 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+  - script: "echo $(System.DefaultWorkingDirectory)"
+    displayName: "echo"
+
   - script: "yarn"
     displayName: "install"
 
   - script: "yarn build"
     displayName: "build frontend"
 
-  - script: echo Hello, world!
-    displayName: "Run a one-line script"
-
-  - script: |
-      echo Add other tasks to build, test, and deploy your project.
-      echo See https://aka.ms/yaml
-    displayName: "Run a multi-line script"
+  - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
+    artifact: WebApp
