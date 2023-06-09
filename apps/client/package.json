@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test:ci": "vitest",
+    "test:ci": "vitest  --reporter=junit --outputFile=../../test-results/testResult.xml --watch=false",
     "test": "vitest"
   },
   "dependencies": {

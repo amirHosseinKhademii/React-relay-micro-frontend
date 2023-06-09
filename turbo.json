@@ -10,7 +10,8 @@
       "outputs": []
     },
     "test:ci": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "dev": {
       "cache": false

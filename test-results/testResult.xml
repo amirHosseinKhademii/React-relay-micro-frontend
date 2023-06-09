@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="1" failures="0" errors="0" time="0.659">
+    <testsuite name="src/button.test.ts" timestamp="2023-06-09T12:52:40.214Z" hostname="Amirs-MBP" tests="1" failures="0" errors="0" skipped="0" time="0.002">
+        <testcase classname="src/button.test.ts" name="Button &gt; should be true" time="0.001">
+        </testcase>
+    </testsuite>
+</testsuites>

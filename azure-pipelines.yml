@@ -16,6 +16,11 @@ steps:
   - script: "yarn test:ci"
     displayName: "test ci frontend"
 
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: "JUnit"
+      testResultsFiles: "**/test-results/testResult.xml"
+
   - script: "yarn build"
     displayName: "build frontend"
 
