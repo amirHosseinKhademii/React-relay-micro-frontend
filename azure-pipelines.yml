@@ -9,24 +9,22 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-stages:
-  - stage: CI
-    jobs:
-      - job: CI
-        steps:
-          - script: "yarn"
-            displayName: "install"
+jobs:
+  - job: CI
+    steps:
+      - script: "yarn"
+        displayName: "install"
 
-          - script: "yarn test:ci"
-            displayName: "test ci frontend"
+      - script: "yarn test:ci"
+        displayName: "test ci frontend"
 
-          - task: PublishTestResults@2
-            inputs:
-              testResultsFormat: "JUnit"
-              testResultsFiles: "**/test-results/testResult.xml"
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: "JUnit"
+          testResultsFiles: "**/test-results/testResult.xml"
 
-          - script: "yarn build"
-            displayName: "build frontend"
+      - script: "yarn build"
+        displayName: "build frontend"
 
-          - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
-            artifact: WebApp
+      - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
+        artifact: WebApp
