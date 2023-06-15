@@ -29,7 +29,7 @@ jobs:
       - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
         artifact: WebApp
   - job: CD
-    dependsOn: CI
+    # dependsOn: CI
     steps:
       - task: AzureCLI@2
         inputs:
