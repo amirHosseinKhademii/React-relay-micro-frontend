@@ -35,5 +35,12 @@ jobs:
         inputs:
           azureSubscription: ahk-service-connection
           scriptType: "bash"
+          scriptLocation: "inlineScript"
+          inlineScript: ls -R
+
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: ahk-service-connection
+          scriptType: "bash"
           scriptLocation: "scriptPath"
           scriptPath: ./create-infra.azcli
