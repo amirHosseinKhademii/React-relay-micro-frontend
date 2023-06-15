@@ -29,9 +29,10 @@ jobs:
       - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
         artifact: WebApp
   - job: CD
-  - task: AzureCLI@2
-    inputs:
-      azureSubscription: ahk-service-connection
-      scriptType: "bash"
-      scriptLocation: "scriptPath"
-      scriptPath: create-infra.azcli
+    steps:
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: ahk-service-connection
+          scriptType: "bash"
+          scriptLocation: "scriptPath"
+          scriptPath: create-infra.azcli
