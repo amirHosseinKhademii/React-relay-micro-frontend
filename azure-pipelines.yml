@@ -43,12 +43,12 @@ jobs:
       - download: current
         artifact: WebApp
 
-      - script: "echo $(Pipeline.Workspace)"
+      - script: "ls -R $(Pipeline.Workspace)"
         displayName: "Workspace"
 
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: ahk-service-connection
-          scriptType: "bash"
-          scriptLocation: "scriptPath"
-          scriptPath: ./copy-file.sh
+      # - task: AzureCLI@2
+      #   inputs:
+      #     azureSubscription: ahk-service-connection
+      #     scriptType: "bash"
+      #     scriptLocation: "scriptPath"
+      #     scriptPath: ./copy-file.sh
