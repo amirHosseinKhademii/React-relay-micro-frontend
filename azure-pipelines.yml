@@ -26,7 +26,7 @@ jobs:
       - script: "yarn build"
         displayName: "build frontend"
 
-      - publish: $(System.DefaultWorkingDirectory)/apps/client/public
+      - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
         artifact: WebApp
 
   - job: CD
