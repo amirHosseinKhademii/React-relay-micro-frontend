@@ -30,17 +30,28 @@ jobs:
   #       artifact: WebApp
   - job: CD
     # dependsOn: CI
-    steps:
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: ahk-service-connection
-          scriptType: "bash"
-          scriptLocation: "inlineScript"
-          inlineScript: ls -R
 
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: ahk-service-connection
-          scriptType: "bash"
-          scriptLocation: "scriptPath"
-          scriptPath: ./create-infra.sh
+    steps:
+      - script: "node --version"
+        displayName: "node version"
+
+      # - task: AzureCLI@2
+      #   inputs:
+      #     azureSubscription: ahk-service-connection
+      #     scriptType: "bash"
+      #     scriptLocation: "inlineScript"
+      #     inlineScript: ls -R
+
+      # - task: AzureCLI@2
+      #   inputs:
+      #     azureSubscription: ahk-service-connection
+      #     scriptType: "bash"
+      #     scriptLocation: "scriptPath"
+      #     scriptPath: ./create-infra.sh
+
+      # - task: AzureFileCopy@4
+      #   inputs:
+      #     SourcePath: # string. Required. Source.
+      #     azureSubscription: ahk-service-connection
+      #     Destination: "AzureBlob"
+      #     storage: # string. Alias: StorageAccountRM. Required. RM Storage Account.
