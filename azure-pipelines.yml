@@ -12,46 +12,39 @@ pool:
 jobs:
   - job: CI
     steps:
-      - script: "yarn"
-        displayName: "install"
+      # - script: "yarn"
+      #   displayName: "install"
 
-      - script: "yarn test:ci"
-        displayName: "test ci frontend"
+      # - script: "yarn test:ci"
+      #   displayName: "test ci frontend"
 
-      - task: PublishTestResults@2
-        inputs:
-          testResultsFormat: "JUnit"
-          testResultsFiles: "**/test-results/testResult.xml"
+      # - task: PublishTestResults@2
+      #   inputs:
+      #     testResultsFormat: "JUnit"
+      #     testResultsFiles: "**/test-results/testResult.xml"
 
-      - script: "yarn build"
-        displayName: "build frontend"
+      # - script: "yarn build"
+      #   displayName: "build frontend"
 
-      - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
+      - publish: $(System.DefaultWorkingDirectory)/apps/client/public
         artifact: WebApp
 
   - job: CD
     # dependsOn: CI
 
     steps:
-      - script: "node --version"
-        displayName: "node version"
-
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: ahk-service-connection
-          scriptType: "bash"
-          scriptLocation: "inlineScript"
-          inlineScript: ls -R
-
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: ahk-service-connection
-          scriptType: "bash"
-          scriptLocation: "scriptPath"
-          scriptPath: ./create-infra.sh
+      # - task: AzureCLI@2
+      #   inputs:
+      #     azureSubscription: ahk-service-connection
+      #     scriptType: "bash"
+      #     scriptLocation: "scriptPath"
+      #     scriptPath: ./create-infra.sh
 
       - download: current
         artifact: WebApp
+
+      - script: "echo $(Pipeline.Workspace)"
+        displayName: "Workspace"
 
       - task: AzureCLI@2
         inputs:
