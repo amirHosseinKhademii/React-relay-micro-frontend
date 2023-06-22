@@ -10,24 +10,25 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  # - job: CI
-  #   steps:
-  #     - script: "yarn"
-  #       displayName: "install"
+  - job: CI
+    steps:
+      - script: "yarn"
+        displayName: "install"
 
-  #     - script: "yarn test:ci"
-  #       displayName: "test ci frontend"
+      - script: "yarn test:ci"
+        displayName: "test ci frontend"
 
-  #     - task: PublishTestResults@2
-  #       inputs:
-  #         testResultsFormat: "JUnit"
-  #         testResultsFiles: "**/test-results/testResult.xml"
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: "JUnit"
+          testResultsFiles: "**/test-results/testResult.xml"
 
-  #     - script: "yarn build"
-  #       displayName: "build frontend"
+      - script: "yarn build"
+        displayName: "build frontend"
 
-  #     - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
-  #       artifact: WebApp
+      - publish: $(System.DefaultWorkingDirectory)/apps/client/dist
+        artifact: WebApp
+
   - job: CD
     # dependsOn: CI
 
@@ -35,23 +36,26 @@ jobs:
       - script: "node --version"
         displayName: "node version"
 
-      # - task: AzureCLI@2
-      #   inputs:
-      #     azureSubscription: ahk-service-connection
-      #     scriptType: "bash"
-      #     scriptLocation: "inlineScript"
-      #     inlineScript: ls -R
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: ahk-service-connection
+          scriptType: "bash"
+          scriptLocation: "inlineScript"
+          inlineScript: ls -R
 
-      # - task: AzureCLI@2
-      #   inputs:
-      #     azureSubscription: ahk-service-connection
-      #     scriptType: "bash"
-      #     scriptLocation: "scriptPath"
-      #     scriptPath: ./create-infra.sh
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: ahk-service-connection
+          scriptType: "bash"
+          scriptLocation: "scriptPath"
+          scriptPath: ./create-infra.sh
 
-      # - task: AzureFileCopy@4
-      #   inputs:
-      #     SourcePath: # string. Required. Source.
-      #     azureSubscription: ahk-service-connection
-      #     Destination: "AzureBlob"
-      #     storage: # string. Alias: StorageAccountRM. Required. RM Storage Account.
+      - download: current
+        artifact: WebApp
+
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: ahk-service-connection
+          scriptType: "bash"
+          scriptLocation: "scriptPath"
+          scriptPath: ./copy-file.sh

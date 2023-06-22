@@ -1,6 +1,0 @@
-  RG_NAME=AKH_auto_cd
-  ACCOUNT_NAME=akhstorageauto
-  
- 
-  az storage file upload-batch  
- 
