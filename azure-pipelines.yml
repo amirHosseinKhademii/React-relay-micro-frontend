@@ -43,4 +43,4 @@ jobs:
           azureSubscription: ahk-service-connection
           scriptType: "bash"
           scriptLocation: "scriptPath"
-          scriptPath: ./create-infra.azcli
+          scriptPath: ./create-infra.sh
