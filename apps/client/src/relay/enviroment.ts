@@ -74,7 +74,7 @@ const subscribe = (
 // };
 
 const operations = (operation: RequestParameters, variables: Variables) => {
-  return fetch("http://localhost:3001/graphql", {
+  return fetch("/graphql", {
     method: "POST",
     headers: {
       Accept: "application/json",
