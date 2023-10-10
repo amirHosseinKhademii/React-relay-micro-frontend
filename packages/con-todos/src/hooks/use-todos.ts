@@ -3,10 +3,13 @@ import {
   usePaginationFragment,
   useSubscription,
 } from "react-relay";
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { GraphQLSubscriptionConfig } from "relay-runtime";
 import { TodosQuery } from "../graphql/Todos.queries";
-import { TodosSubscription } from "../graphql/Todos.subscriptions";
+import {
+  TodosAddedSubscription,
+  TodosUpdatedSubscription,
+} from "../graphql/Todos.subscriptions";
 import { TodosFragment } from "../graphql/Todos.fragment";
 import { CardsUpdatedSubscription } from "con-cards";
 
@@ -16,10 +19,20 @@ import type { TodosFragment$key } from "../graphql/__generated__/TodosFragment.g
 import type { TodosSubscription as TTodosSubscription } from "../graphql/__generated__/TodosSubscription.graphql";
 import type { TCardsUpdatedSubscription } from "con-cards";
 
-const todosSubscriptionConfig: GraphQLSubscriptionConfig<TTodosSubscription> = {
-  subscription: TodosSubscription,
-  variables: {},
-};
+const todosUpdatedSubscriptionConfig: GraphQLSubscriptionConfig<TTodosSubscription> =
+  {
+    subscription: TodosUpdatedSubscription,
+    variables: {},
+  };
+
+const todosAddedSubscriptionConfig: GraphQLSubscriptionConfig<TTodosSubscription> =
+  {
+    subscription: TodosAddedSubscription,
+    variables: {},
+    onNext: (response) => {
+      console.log({ response });
+    },
+  };
 
 const cardsSubscriptionConfig: GraphQLSubscriptionConfig<TCardsUpdatedSubscription> =
   {
@@ -37,7 +50,19 @@ export const useTodos = () => {
     TodosFragment$key
   >(TodosFragment, todos);
 
-  useSubscription(todosSubscriptionConfig);
+  useSubscription(todosUpdatedSubscriptionConfig);
+
+  const todoAddedSubscriptionConfig = useMemo(
+    () => ({
+      subscription: TodosAddedSubscription,
+      variables: {
+        connections: [data.todos.__id],
+      },
+    }),
+    [data.todos.__id]
+  );
+
+  useSubscription(todoAddedSubscriptionConfig);
 
   useSubscription(cardsSubscriptionConfig);
 

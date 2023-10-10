@@ -23,6 +23,7 @@ import { Todo, TodoConnection } from './types/todo.types';
 import {
   AddTodoPayload,
   DeleteTodoPayload,
+  TodoResponseEdge,
   UpdateTodoPayload,
 } from './types/tood.response';
 
@@ -51,11 +52,15 @@ export class TodoResolver {
   }
 
   @RelayMutation(() => AddTodoPayload)
-  addTodo(
+  async addTodo(
     @GetUser() user: User,
     @InputArg(() => CreateTodoInput) input: CreateTodoInput,
   ): Promise<AddTodoPayload> {
-    return this.service.addTodo(input, user.id);
+    const todo = this.service.addTodo(input, user.id);
+    pubSub.publish('todoAdded', {
+      todoAdded: (await todo).addTodoEdge,
+    });
+    return todo;
   }
 
   @RelayMutation(() => UpdateTodoPayload)
@@ -85,6 +90,11 @@ export class TodoResolver {
   @ResolveField()
   user(@Parent() todo: Todo): Promise<User> {
     return this.userService.finduserById(todo.user);
+  }
+
+  @Subscription(() => TodoResponseEdge, { name: 'todoAdded' })
+  todoAdded() {
+    return pubSub.asyncIterator('todoAdded');
   }
 
   @Subscription(() => Todo, { name: 'todoUpdated' })
