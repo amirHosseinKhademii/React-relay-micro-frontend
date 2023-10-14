@@ -1,0 +1,342 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+interface Node {
+  id: ID!
+}
+
+type Comment implements Node {
+  id: ID!
+  title: String!
+  description: String
+  cardId: ID!
+  created_at: DateTime
+  updated_at: DateTime
+  likes: [ID!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type CommentConnection {
+  edges: [CommentEdge!]
+  pageInfo: CommentPageInfo
+}
+
+type CommentEdge {
+  cursor: String
+  node: Comment
+}
+
+type CommentPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type User implements Node {
+  id: ID!
+  userName: String!
+  fullName: String!
+  created_at: DateTime
+  updated_at: DateTime
+  followers: [ID!]!
+  followings: [ID!]!
+}
+
+type UsersConnection {
+  edges: [UserEdge!]
+  pageInfo: UserPageInfo
+}
+
+type UserEdge {
+  cursor: String
+  node: User
+}
+
+type UserPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type AuthPayload {
+  user: User!
+  token: String!
+}
+
+type FollowOrUnfollowPayload {
+  user: User!
+  clientMutationId: String
+}
+
+type AddCommentPayload {
+  addCommentEdge: CommentResponseEdge!
+  clientMutationId: String
+}
+
+type CommentResponseEdge {
+  cursor: String
+  node: Comment
+}
+
+type DeleteCommentPayload {
+  id: ID!
+  clientMutationId: String
+}
+
+type LikeCommentPayload {
+  comment: Comment!
+  clientMutationId: String
+}
+
+type Card implements Node {
+  id: ID!
+  title: String!
+  description: String
+  isCompleted: Boolean
+  comments(before: String, after: String, first: Float, last: Float, query: String): CommentConnection!
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+type CardConnection {
+  edges: [CardEdge!]
+  pageInfo: CardPageInfo
+}
+
+type CardEdge {
+  cursor: String
+  node: Card
+}
+
+type CardPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type AddCardPayload {
+  addCardEdge: CardResponseEdge!
+  clientMutationId: String
+}
+
+type CardResponseEdge {
+  cursor: String
+  node: Card
+}
+
+type UpdateCardPayload {
+  card: Card!
+  clientMutationId: String
+}
+
+type DeleteCardPayload {
+  id: ID!
+  clientMutationId: String
+}
+
+type Todo implements Node {
+  id: ID!
+  title: String!
+  description: String
+  isCompleted: Boolean
+  created_at: DateTime
+  updated_at: DateTime
+  cards(before: String, after: String, first: Float, last: Float, query: String): CardConnection!
+  user: User!
+}
+
+type TodoConnection {
+  edges: [TodoEdge!]
+  pageInfo: TodoPageInfo
+}
+
+type TodoEdge {
+  cursor: String
+  node: Todo
+}
+
+type TodoPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type AddTodoPayload {
+  addTodoEdge: TodoResponseEdge!
+  clientMutationId: String
+}
+
+type TodoResponseEdge {
+  cursor: String
+  node: Todo
+}
+
+type UpdateTodoPayload {
+  todo: Todo!
+  clientMutationId: String
+}
+
+type DeleteTodoPayload {
+  id: ID!
+  clientMutationId: String
+}
+
+type Message implements Node {
+  id: ID!
+  body: String!
+  created_at: DateTime
+  updated_at: DateTime
+  user: String!
+  receiver: User!
+  chatId: String!
+}
+
+type MessageConnection {
+  edges: [MessageEdge!]
+  pageInfo: MessagePageInfo
+}
+
+type MessageEdge {
+  cursor: String
+  node: Message
+}
+
+type MessagePageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type AddMessageSubPayload {
+  addMessageEdge: MessageResponseEdge!
+  clientMutationId: String!
+}
+
+type MessageResponseEdge {
+  cursor: String
+  node: Message
+}
+
+type AddMessagePayload {
+  addMessageEdge: MessageResponseEdge!
+  clientMutationId: String
+}
+
+type Query {
+  node(id: ID!): Node
+  nodes(ids: ID!): [Node!]
+  users(before: String, after: String, first: Float, last: Float, query: String): UsersConnection!
+  usersByIds(before: String, after: String, first: Float, last: Float, ids: [ID!]!, query: String): UsersConnection!
+  user(userId: String!): User!
+  todos(before: String, after: String, first: Float, last: Float, query: String): TodoConnection!
+  todo(id: ID!): Todo!
+  cards(before: String, after: String, first: Float, last: Float, query: String): CardConnection!
+  comments(before: String, after: String, first: Float, last: Float, cardId: ID!, query: String): CommentConnection!
+  messages(before: String, after: String, first: Float, last: Float, query: MessagesQuery!): MessageConnection!
+}
+
+input MessagesQuery {
+  chatId: String!
+}
+
+type Mutation {
+  signUp(userName: String!, fullName: String!, password: String!): AuthPayload!
+  signIn(userName: String!, password: String!): AuthPayload!
+  followOrUnfollow(input: FollowOrUnfollowInput!): FollowOrUnfollowPayload
+  addTodo(input: AddTodoInput!): AddTodoPayload
+  updateTodo(input: UpdateTodoInput!): UpdateTodoPayload
+  deleteTodo(input: DeleteTodoInput!): DeleteTodoPayload
+  addCard(input: AddCardInput!): AddCardPayload
+  updateCard(input: UpdateCardInput!): UpdateCardPayload
+  deleteCard(input: DeleteCardInput!): DeleteCardPayload
+  addComment(input: AddCommentInput!): AddCommentPayload
+  deleteComment(input: DeleteCommentInput!): DeleteCommentPayload
+  likeComment(input: LikeCommentInput!): LikeCommentPayload
+  addMessage(input: AddMessageInput!): AddMessagePayload
+}
+
+input FollowOrUnfollowInput {
+  id: ID!
+  clientMutationId: String
+}
+
+input AddTodoInput {
+  title: String!
+  description: String = ""
+  clientMutationId: String
+}
+
+input UpdateTodoInput {
+  id: ID!
+  title: String
+  description: String
+  isCompleted: Boolean
+  clientMutationId: String
+}
+
+input DeleteTodoInput {
+  id: ID!
+  clientMutationId: String
+}
+
+input AddCardInput {
+  todoId: ID!
+  title: String!
+  description: String = ""
+  clientMutationId: String
+}
+
+input UpdateCardInput {
+  id: ID!
+  title: String
+  description: String
+  isCompleted: Boolean
+  clientMutationId: String
+}
+
+input DeleteCardInput {
+  id: ID!
+  clientMutationId: String
+}
+
+input AddCommentInput {
+  cardId: ID!
+  title: String!
+  description: String = ""
+  clientMutationId: String
+}
+
+input DeleteCommentInput {
+  id: ID!
+  clientMutationId: String
+}
+
+input LikeCommentInput {
+  id: ID!
+  clientMutationId: String
+}
+
+input AddMessageInput {
+  body: String!
+  receiver: String!
+  chatId: String!
+  clientMutationId: String
+}
+
+type Subscription {
+  todoAdded: TodoResponseEdge!
+  todoUpdated: Todo!
+  cardAdded: Card!
+  cardUpdated: Card!
+  messageAdded(chatId: String!): AddMessageSubPayload!
+}
