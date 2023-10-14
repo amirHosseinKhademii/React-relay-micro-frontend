@@ -1,6 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { CardConnection } from 'src/card';
-import { NodeInterface, NodeType, CreateConnectionType } from 'src/relay';
+
+import { NodeInterface, NodeType, CreateConnectionType } from 'src/utils/relay';
 import { User } from 'src/user';
 import {
   Column,
@@ -11,9 +11,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@NodeType('Todo')
+@NodeType('Feed')
 @Entity()
-export class Todo implements NodeInterface {
+export class Feed implements NodeInterface {
   @ObjectIdColumn({ update: false })
   _id: string;
 
@@ -41,14 +41,10 @@ export class Todo implements NodeInterface {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @Column({ default: [] })
-  @Field(() => CardConnection)
-  cards: string[];
-
   @Column()
   @Field(() => User)
   user: string;
 }
 
 @ObjectType()
-export class TodoConnection extends CreateConnectionType<Todo>(Todo) {}
+export class FeedConnection extends CreateConnectionType<Feed>(Feed) {}

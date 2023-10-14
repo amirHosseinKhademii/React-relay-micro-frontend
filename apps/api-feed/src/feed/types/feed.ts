@@ -8,12 +8,7 @@ import {
 } from 'class-validator';
 
 @InputType()
-export class CreateCommentInput {
-  @IsString()
-  @IsNotEmpty()
-  @Field(() => ID!)
-  cardId: string;
-
+export class CreateFeedInput {
   @IsString()
   @IsNotEmpty()
   @MinLength(2)
@@ -26,15 +21,30 @@ export class CreateCommentInput {
 }
 
 @InputType()
-export class DeleteCommentInput {
+export class UpdateFeedInput {
   @IsNotEmpty()
   @IsString()
   @Field(() => ID)
   id: string;
+
+  @IsString()
+  @IsOptional()
+  @MinLength(2)
+  @Field({ nullable: true })
+  title: string;
+
+  @IsOptional()
+  @Field({ nullable: true })
+  description?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  @Field({ nullable: true })
+  isCompleted: boolean;
 }
 
 @InputType()
-export class LikeCommentInput {
+export class DeleteFeedInput {
   @IsNotEmpty()
   @IsString()
   @Field(() => ID)

@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { ConnectionCursor, Edge } from 'graphql-relay';
-import { CreateConnectionType } from 'src/relay';
+import { CreateConnectionType } from 'src/utils/relay';
 import { User } from './user.type';
 
 @ObjectType()

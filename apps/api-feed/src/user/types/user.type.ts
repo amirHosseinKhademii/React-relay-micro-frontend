@@ -1,5 +1,5 @@
 import { Field, ID } from '@nestjs/graphql';
-import { NodeInterface, NodeType } from 'src/relay';
+import { NodeInterface, NodeType } from 'src/utils/relay';
 import {
   Column,
   CreateDateColumn,

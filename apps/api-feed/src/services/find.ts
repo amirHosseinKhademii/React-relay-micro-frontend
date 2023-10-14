@@ -1,5 +1,5 @@
 import { connectionFromArraySlice } from 'graphql-relay';
-import { ConnectionArgs, getPagingParameters } from 'src/relay';
+import { ConnectionArgs, getPagingParameters } from 'src/utils/relay';
 import { FindOptionsWhere, Repository } from 'typeorm';
 
 export const findAll = async <T>(

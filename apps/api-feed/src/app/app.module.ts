@@ -7,17 +7,15 @@ import { join } from 'path';
 import { NodeResolver } from './node.resolver';
 import { mainContext, subscriptionsConfig, typeormConfig } from 'src/utils';
 import { User, UserModule } from 'src/user';
-import { Card, CardModule } from 'src/card';
-import { Todo, TodoModule } from 'src/todo';
-import { Comment, CommentModule } from 'src/comment';
-import { Message, MessageModule } from 'src/message';
+
+import { Feed, FeedModule } from 'src/feed';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       ...typeormConfig,
-      entities: [User, Card, Todo, Comment, Message],
+      entities: [User, Feed],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
@@ -27,10 +25,7 @@ import { Message, MessageModule } from 'src/message';
       context: mainContext,
     }),
     UserModule,
-    TodoModule,
-    CardModule,
-    CommentModule,
-    MessageModule,
+    FeedModule,
   ],
   providers: [NodeResolver],
 })

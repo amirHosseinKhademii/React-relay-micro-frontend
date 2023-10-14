@@ -11,7 +11,7 @@ import {
   FollowPayload,
   UsersConnection,
 } from './types/user.response';
-import { ConnectionArgs, InputArg, RelayMutation } from 'src/relay';
+import { ConnectionArgs, InputArg, RelayMutation } from 'src/utils/relay';
 import { GetUser } from './decorators';
 import { UseGuards } from '@nestjs/common';
 import { AuthGraphGuard } from './guards';

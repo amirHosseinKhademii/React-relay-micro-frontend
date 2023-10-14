@@ -17,7 +17,7 @@ import {
   SigninUserInput,
 } from './types/user.input';
 import { toGlobalId } from 'graphql-relay';
-import { ConnectionArgs } from 'src/relay';
+import { ConnectionArgs } from 'src/utils/relay';
 import { findAll } from 'src/services';
 import { AuthPayload, UsersConnection } from './types/user.response';
 
