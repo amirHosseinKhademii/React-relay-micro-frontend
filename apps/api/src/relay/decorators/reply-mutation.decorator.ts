@@ -3,26 +3,26 @@ import {
   MutationOptions,
   Mutation,
   Args,
-} from '@nestjs/graphql';
-import { InputArgFactory, PayloadMixin } from '../input-arg-factory';
+} from "@nestjs/graphql";
+import { InputArgFactory, PayloadMixin } from "./input-arg-factory";
 
-import { MetadataStorage } from '../metadata-storage';
+import { MetadataStorage } from "../meta/metadata-storage";
 import {
   AnyConstructor,
   CreatePayloadTypeArgs,
   RelayMutationOptions,
-} from '../relay.types';
+} from "../types/relay.types";
 
 export const isPromise = <T>(
-  maybePromise: T | Promise<T>,
+  maybePromise: T | Promise<T>
 ): maybePromise is Promise<T> =>
-  Boolean(typeof (maybePromise as any)?.then === 'function');
+  Boolean(typeof (maybePromise as any)?.then === "function");
 
 export const ensurePromise = <T>(maybePromise: T | Promise<T>) =>
   isPromise(maybePromise) ? maybePromise : Promise.resolve(maybePromise);
 
 export const getClientMutationId = (args: any[]): string => {
-  const relayArgIndex = args.findIndex((arg) => arg['clientMutationId']);
+  const relayArgIndex = args.findIndex((arg) => arg["clientMutationId"]);
   return args[relayArgIndex]?.clientMutationId || null;
 };
 
@@ -34,14 +34,14 @@ export class PayloadTypeFactory {
   }
 }
 
-export function RelayMutation<T>(
+export function RelayMutation(
   typeFunc: ReturnTypeFunc,
-  options?: RelayMutationOptions,
+  options?: RelayMutationOptions
 ): MethodDecorator {
   return (
     target: Record<string, any>,
     key: string | symbol,
-    descriptor: PropertyDescriptor,
+    descriptor: PropertyDescriptor
   ) => {
     const mutationName = options?.name ? options.name : String(key);
 
@@ -52,7 +52,7 @@ export function RelayMutation<T>(
     descriptor.value = async function (...args: any[]) {
       const clientMutationId = getClientMutationId(args);
       const methodResult = await ensurePromise(
-        originalMethod.apply(this, args),
+        originalMethod.apply(this, args)
       );
       return { ...methodResult, clientMutationId };
     };
@@ -66,7 +66,7 @@ export function RelayMutation<T>(
       mutationName,
     });
     const inputArgOptions = {
-      name: 'input',
+      name: "input",
       nullable: false,
       ...argOptions,
     };

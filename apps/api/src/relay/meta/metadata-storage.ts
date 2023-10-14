@@ -5,7 +5,7 @@ import {
   MethodIdentifier,
   METHOD_METADATA_KEY,
   ParameterMetadata,
-} from './relay.types';
+} from "../types/relay.types";
 
 export class MetadataStorage {
   static addMethodMetadata(args: MethodIdentifier & ParameterMetadata): void {

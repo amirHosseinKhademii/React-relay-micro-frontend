@@ -1,8 +1,8 @@
-import { Type } from '@nestjs/common';
-import { ObjectType, Field } from '@nestjs/graphql';
-import * as Relay from 'graphql-relay';
+import { Type } from "@nestjs/common";
+import { ObjectType, Field } from "@nestjs/graphql";
+import * as Relay from "graphql-relay";
 
-const typeMap = {};
+const typeMap = {} as Record<string, any>;
 
 export function CreateConnectionType<T>(type: Type<T>): any {
   const { name } = type;

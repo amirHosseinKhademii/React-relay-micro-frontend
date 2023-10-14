@@ -1,12 +1,11 @@
-import { ReturnTypeFunc } from '@nestjs/graphql';
-import { MetadataStorage } from '../metadata-storage';
-import { InputArgOptions } from '../relay.types';
+import { ReturnTypeFunc } from "@nestjs/graphql";
+import { MetadataStorage } from "../meta/metadata-storage";
+import { InputArgOptions } from "../types/relay.types";
 
-export function InputArg<T>(
+export function InputArg(
   typeFunc: ReturnTypeFunc,
-  options?: InputArgOptions,
-): ParameterDecorator {
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  options?: InputArgOptions
+): (target: Object, key: string | symbol, paramIndex: number) => void {
   return (target: Object, key: string | symbol, paramIndex: number) => {
     MetadataStorage.addMethodMetadata({
       ...options,

@@ -1,26 +1,26 @@
-import { Field, InputType, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from "@nestjs/graphql";
 import {
   AnyConstructor,
   CreateInputTypeArgs,
   InputArgOptionsAsynConstructor,
-} from './relay.types';
+} from "../types/relay.types";
 
 export const capitalise = (text: string): string =>
   text.charAt(0).toUpperCase() + text.slice(1);
 
 export const getInputName = (mutationName: string): string =>
-  capitalise(mutationName) + 'Input';
+  capitalise(mutationName) + "Input";
 
 export function InputMixin<TBase extends AnyConstructor>(
   base: TBase,
-  mutationName: string,
+  mutationName: string
 ) {
   const name = getInputName(mutationName);
 
   @InputType(name)
   class Input extends base {
     @Field({
-      name: 'clientMutationId',
+      name: "clientMutationId",
       nullable: true,
     })
     clientMutationId?: string;
@@ -37,7 +37,7 @@ export class InputArgFactory {
        * -> Do not create input type for this mutation
        */
       throw new Error(
-        `Not detected any RelayArg declarations in ${args.mutationName}.`,
+        `Not detected any RelayArg declarations in ${args.mutationName}.`
       );
     }
 
@@ -46,7 +46,7 @@ export class InputArgFactory {
        * Throw error that multiple inputs have been registered
        */
       throw new Error(
-        `Detected multiple RelayArg declarations in ${args.mutationName}.`,
+        `Detected multiple RelayArg declarations in ${args.mutationName}.`
       );
     }
 
@@ -69,18 +69,18 @@ export class InputArgFactory {
 }
 
 export const getPayloadName = (mutationName: string): string =>
-  capitalise(mutationName) + 'Payload';
+  capitalise(mutationName) + "Payload";
 
 export function PayloadMixin<TBase extends AnyConstructor>(
   base: TBase,
-  mutationName: string,
+  mutationName: string
 ) {
   const name = getPayloadName(mutationName);
 
   @ObjectType(name)
   class Payload extends base {
     @Field({
-      name: 'clientMutationId',
+      name: "clientMutationId",
       nullable: true,
     })
     clientMutationId?: string;

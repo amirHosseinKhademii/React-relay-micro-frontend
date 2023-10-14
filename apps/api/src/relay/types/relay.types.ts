@@ -1,19 +1,15 @@
-import { Type } from '@nestjs/common';
 import {
-  ObjectType,
   Field,
   InterfaceType,
   ID,
   ArgsOptions,
   ReturnTypeFunc,
   MutationOptions,
-} from '@nestjs/graphql';
-import * as Relay from 'graphql-relay';
-import { InputMixin, PayloadMixin } from './input-arg-factory';
+} from "@nestjs/graphql";
 
-const typeMap = {};
+import { InputMixin, PayloadMixin } from "../decorators";
 
-@InterfaceType('Node')
+@InterfaceType("Node")
 export class NodeInterface {
   @Field(() => ID, {
     nullable: false,
@@ -39,13 +35,13 @@ export type ResolvedNode =
 
 export type InputArgOptions = Omit<
   ArgsOptions,
-  'name' | 'nullable' | 'type' | 'defaultValue'
+  "name" | "nullable" | "type" | "defaultValue"
 >;
 
-export const BASE_KEY = 'nestjs-relay';
-export const METHOD_KEY = 'method';
+export const BASE_KEY = "nestjs-relay";
+export const METHOD_KEY = "method";
 export const METHOD_METADATA_KEY = `${BASE_KEY}:${METHOD_KEY}`;
-export const CLASS_KEY = 'class';
+export const CLASS_KEY = "class";
 export const CLASS_METADATA_KEY = `${BASE_KEY}:${CLASS_KEY}`;
 
 export interface MethodIdentifier {
@@ -63,7 +59,7 @@ export type ClassMetadata = {
   name: string;
 };
 
-export type ParameterMetadata = Omit<ArgsOptions, 'type'> & {
+export type ParameterMetadata = Omit<ArgsOptions, "type"> & {
   typeFunc: ReturnTypeFunc;
   paramIndex: number;
 };
@@ -83,7 +79,7 @@ export interface CreateInputTypeArgs {
 
 export type InputArgOptionsAsynConstructor = Pick<
   ArgsOptions,
-  'type' | 'description'
+  "type" | "description"
 > & {
   paramIndex: number;
 };
@@ -97,4 +93,4 @@ export interface CreatePayloadTypeArgs {
   mutationName: string;
 }
 
-export type RelayMutationOptions = Omit<MutationOptions, 'nullable'>;
+export type RelayMutationOptions = Omit<MutationOptions, "nullable">;
