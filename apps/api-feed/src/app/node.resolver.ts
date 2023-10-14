@@ -2,7 +2,7 @@
 import { Resolver } from '@nestjs/graphql';
 import { fromGlobalId } from 'graphql-relay';
 import { NodeFieldResolver, NodeInterface } from 'src/utils/relay';
-import { FeedService } from 'src/feed';
+import { FeedService } from 'src/modules/feed';
 @Resolver(NodeInterface)
 export class NodeResolver extends NodeFieldResolver {
   constructor(private FeedService: FeedService) {

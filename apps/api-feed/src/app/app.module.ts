@@ -8,7 +8,7 @@ import { NodeResolver } from './node.resolver';
 import { mainContext, subscriptionsConfig, typeormConfig } from 'src/utils';
 import { User, UserModule } from 'src/user';
 
-import { Feed, FeedModule } from 'src/feed';
+import { Feed, FeedModule } from 'src/modules/feed';
 
 @Module({
   imports: [
